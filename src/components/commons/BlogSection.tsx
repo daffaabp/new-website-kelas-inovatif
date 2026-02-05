@@ -3,9 +3,9 @@ import Link from 'next/link';
 export interface LatestBlog {
     id: number;
     title: string;
-    category: string | null;
-    image: string | null;
-    slug: string | null;
+    category: string | null | undefined;
+    image: string | null | undefined;
+    slug: string | null | undefined;
     created_at: string | Date;
 }
 
@@ -14,7 +14,7 @@ interface BlogSectionProps {
 }
 
 // Helper function to get category color based on category name
-const getCategoryColor = (category: string | null): string => {
+const getCategoryColor = (category: string | null | undefined): string => {
     if (!category) return 'bg-gray-400';
     
     const categoryLower = category.toLowerCase();

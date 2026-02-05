@@ -3,7 +3,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 
 interface ScheduleContentProps {
-    description: string;
+    description: string | undefined | null;
 }
 
 export function ScheduleContent({ description }: ScheduleContentProps) {
@@ -12,7 +12,7 @@ export function ScheduleContent({ description }: ScheduleContentProps) {
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
         >
-            {description}
+            {description || ""}
         </ReactMarkdown>
     );
 }
