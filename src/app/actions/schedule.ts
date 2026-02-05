@@ -107,6 +107,13 @@ import { saveFile } from '@/lib/storage';
 
 // ... imports
 
+// Helper to safely parse numbers
+const parseIntSafe = (value: any) => {
+    if (value === undefined || value === null || value === '') return null;
+    const num = Number(value);
+    return isNaN(num) ? null : num;
+};
+
 export async function createSchedule(data: any) {
     try {
         // Handle speaker image upload
@@ -140,8 +147,8 @@ export async function createSchedule(data: any) {
                 excerpt: data.excerpt,
                 benefits: data.benefits,
                 registerUrl: data.register_url,
-                originalPrice: data.original_price,
-                discountedPrice: data.discounted_price,
+                originalPrice: parseIntSafe(data.original_price),
+                discountedPrice: parseIntSafe(data.discounted_price),
             },
         });
 
@@ -183,8 +190,8 @@ export async function updateSchedule(id: number, data: any) {
                 excerpt: data.excerpt,
                 benefits: data.benefits,
                 registerUrl: data.register_url,
-                originalPrice: data.original_price,
-                discountedPrice: data.discounted_price,
+                originalPrice: parseIntSafe(data.original_price),
+                discountedPrice: parseIntSafe(data.discounted_price),
             },
         });
 

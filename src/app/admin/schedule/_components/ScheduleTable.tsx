@@ -5,6 +5,8 @@ import { Filter, LayoutGrid, GraduationCap, BrainCircuit, Laptop, Users, Edit, T
 import Link from 'next/link';
 import { deleteSchedule } from '@/app/actions/schedule';
 import { toast } from 'sonner';
+import { format } from 'date-fns';
+import { id } from 'date-fns/locale';
 
 interface Schedule {
     id: number;
@@ -132,7 +134,7 @@ export function ScheduleTable({ schedules }: ScheduleTableProps) {
                                     </td>
                                     <td className="px-6 py-4 align-middle">
                                         <div className="text-sm text-gray-700 dark:text-gray-300">
-                                            {new Date(schedule.date).toLocaleDateString()}
+                                            {format(new Date(schedule.date), 'dd MMMM yyyy', { locale: id })}
                                         </div>
                                         <div className="text-xs text-gray-500 dark:text-gray-400">
                                             {schedule.start_time} - {schedule.end_time}

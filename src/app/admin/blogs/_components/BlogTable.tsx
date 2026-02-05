@@ -6,6 +6,8 @@ import { Filter, MoreVertical, Edit, Trash2 } from "lucide-react";
 import { deleteBlog } from "@/app/actions/blog";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { format } from 'date-fns';
+import { id } from 'date-fns/locale';
 
 interface BlogTableProps {
     blogs: any[];
@@ -126,7 +128,7 @@ export function BlogTable({ blogs, metadata }: BlogTableProps) {
                                         </span>
                                     </td>
                                     <td className="px-6 py-4 align-middle text-sm text-gray-500 dark:text-gray-400">
-                                        {blog.created_at ? new Date(blog.created_at).toLocaleDateString() : '-'}
+                                        {blog.created_at ? format(new Date(blog.created_at), 'dd MMMM yyyy', { locale: id }) : '-'}
                                     </td>
                                     <td className="px-6 py-4 align-middle text-center">
                                         <div className="flex items-center justify-center gap-2">
