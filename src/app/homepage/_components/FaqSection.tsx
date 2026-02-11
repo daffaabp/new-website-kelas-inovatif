@@ -15,7 +15,7 @@ export function FaqSection() {
 
         <div className="text-center mb-16">
           <span className="inline-block px-3 py-1 border border-gray-300 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
-            FAQ 
+            FAQ
           </span>
           <h2 id="faq-heading" className="text-4xl font-medium mb-3">
             Komitmen Kami untuk Membantu Setiap Langkah Anda
@@ -30,10 +30,16 @@ export function FaqSection() {
           <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`} className="border-gray-200">
-                <AccordionTrigger className="text-lg font-bold text-gray-800 hover:text-eduzin-dark hover:no-underline py-6 cursor-pointer">
+                <AccordionTrigger
+                  id={`faq-trigger-${index}`}
+                  className="text-lg font-bold text-gray-800 hover:text-eduzin-dark hover:no-underline py-6 cursor-pointer"
+                >
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-600 text-base leading-relaxed">
+                <AccordionContent
+                  id={`faq-content-${index}`}
+                  className="text-gray-600 text-base leading-relaxed"
+                >
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
