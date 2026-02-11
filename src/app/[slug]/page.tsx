@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             url: `/${post.slug}`,
             images: [
                 {
-                    url: post.image || '/placeholder-image.jpg',
+                    url: post.image || '/admin_image_placeholder.jpeg',
                     width: 1200,
                     height: 630,
                     alt: post.title,
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             card: 'summary_large_image',
             title: post.title,
             description: post.excerpt || "",
-            images: [post.image || '/placeholder-image.jpg'],
+            images: [post.image || '/admin_image_placeholder.jpeg'],
         },
     };
 }
@@ -89,7 +89,7 @@ export default async function BlogDetailPage({ params }: Props) {
             role: 'Penulis',
             bio: 'Penulis di Kelas Inovatif.',
         },
-        image: post.contentImage || post.image || '/placeholder-image.jpg',
+        image: post.contentImage || post.image || '/admin_image_placeholder.jpeg',
         content: post.content || '<p>Konten belum tersedia.</p>',
     };
 
@@ -121,7 +121,7 @@ export default async function BlogDetailPage({ params }: Props) {
             name: p.authorName || 'Admin',
             image: (p.authorImage && !p.authorImage.includes('ui-avatars.com')) ? p.authorImage : '/images/logo-kelas-inovatif/admin_image_placeholder.avif',
         },
-        image: p.image || p.contentImage || '/placeholder-image.jpg',
+        image: p.image || p.contentImage || '/admin_image_placeholder.jpeg',
         slug: p.slug || '',
     }));
 

@@ -5,6 +5,13 @@ import { Hero } from './_components/Hero';
 import { TableOfContents } from './_components/TableOfContents';
 import { PolicyContent } from './_components/PolicyContent';
 
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Kebijakan Privasi - Kelas Inovatif",
+    description: "Kebijakan privasi Kelas Inovatif. Kami menghargai privasi data Anda.",
+};
+
 export default function PrivacyPage() {
     return (
         <main className="bg-privacy-bg-light dark:bg-privacy-bg-dark text-gray-800 dark:text-gray-200 transition-colors duration-300 font-sans min-h-screen">

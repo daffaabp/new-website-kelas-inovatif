@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Kelas Cursor - Kelas Inovatif University',
+    title: 'Kelas Cursor - Kelas Inovatif',
     description: 'Kuasai pengeditan kode berbasis AI dengan Cursor. Tingkatkan produktivitas pengembangan Anda dengan kursus khusus kami.',
 };
 

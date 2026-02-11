@@ -9,7 +9,6 @@ export function Newsletter() {
                     <div className="w-12 h-12 bg-[#1C302B] text-white rounded-full flex items-center justify-center font-serif font-bold text-xl">K</div>
                     <div>
                         <h3 className="font-bold text-lg text-[#1C302B] dark:text-white">Kelas Inovatif</h3>
-                        <p className="text-xs text-gray-500 uppercase tracking-widest">University</p>
                     </div>
                 </div>
                 <div className="relative z-10 text-center md:text-left">
@@ -20,7 +19,7 @@ export function Newsletter() {
                         <input className="flex-1 bg-transparent border-none focus:ring-0 text-sm px-4 dark:text-white" placeholder="Email bisnis..." required type="email" />
                         <button className="bg-[#1C302B] text-white text-[10px] font-bold uppercase px-6 py-2.5 rounded-full hover:bg-opacity-90 transition" type="submit">Berlangganan</button>
                     </form>
-                </div>  
+                </div>
             </div>
         </section>
     );

@@ -16,7 +16,7 @@ interface BlogSectionProps {
 // Helper function to get category color based on category name
 const getCategoryColor = (category: string | null | undefined): string => {
     if (!category) return 'bg-gray-400';
-    
+
     const categoryLower = category.toLowerCase();
     if (categoryLower.includes('akademik')) return 'bg-eduzin-dark';
     if (categoryLower.includes('kampus') || categoryLower.includes('kehidupan')) return 'bg-yellow-400';
@@ -24,7 +24,7 @@ const getCategoryColor = (category: string | null | undefined): string => {
     if (categoryLower.includes('berita') || categoryLower.includes('news')) return 'bg-blue-400';
     if (categoryLower.includes('tutorial')) return 'bg-purple-400';
     if (categoryLower.includes('bisnis')) return 'bg-green-400';
-    
+
     // Default color
     return 'bg-gray-400';
 };
@@ -48,8 +48,8 @@ export function BlogSection({ blogs = [] }: BlogSectionProps) {
             <div className="container mx-auto px-4 md:px-8">
                 <div className="flex justify-between items-end mb-8">
                     <h4 className="text-xs font-bold tracking-widest uppercase text-gray-500">Terbaru dari Blog</h4>
-                    <Link 
-                        href="/blogs" 
+                    <Link
+                        href="/blogs"
                         className="text-xs font-bold underline decoration-1 underline-offset-4 hover:text-eduzin-dark cursor-pointer"
                     >
                         LIHAT SEMUA
@@ -62,16 +62,16 @@ export function BlogSection({ blogs = [] }: BlogSectionProps) {
                             const categoryColor = getCategoryColor(blog.category);
                             const formattedDate = formatDate(blog.created_at);
                             const blogUrl = blog.slug ? `/blogs/${blog.slug}` : '#';
-                            const imageUrl = blog.image || '/placeholder-image.jpg';
+                            const imageUrl = blog.image || '/admin_image_placeholder.jpeg';
 
                             return (
-                                <Link 
-                                    key={blog.id} 
-                                    href={blogUrl} 
+                                <Link
+                                    key={blog.id}
+                                    href={blogUrl}
                                     className="group block cursor-pointer"
                                 >
                                     <div className="overflow-hidden rounded-sm mb-4">
-                                        <img 
+                                        <img
                                             src={imageUrl}
                                             alt={blog.title}
                                             className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"

@@ -42,7 +42,7 @@ export default async function BlogsPage() {
                 image: (blog.authorImage && !blog.authorImage.includes('ui-avatars.com')) ? blog.authorImage : '/images/logo-kelas-inovatif/admin_image_placeholder.avif',
                 role: 'Penulis',
             },
-            image: blog.image || blog.contentImage || '/placeholder-image.jpg',
+            image: blog.image || blog.contentImage || '/admin_image_placeholder.jpeg',
             readTime: blog.readTime || '5 menit baca',
             featured: Boolean(blog.featured),
             slug: blog.slug || undefined,

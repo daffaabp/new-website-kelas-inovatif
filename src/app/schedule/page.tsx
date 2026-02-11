@@ -8,10 +8,27 @@ import { getSchedules } from '@/app/actions/schedule';
 
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = {
-    title: 'Jadwal - Kelas Inovatif University',
-    description: 'Lihat kelas, acara, dan workshop yang akan datang. Rencanakan perjalanan pembelajaran Anda dengan jadwal interaktif kami.',
-};
+
+export async function generateMetadata(
+    props: { searchParams: Promise<{ page?: string; type?: string; month?: string; year?: string }> }
+): Promise<Metadata> {
+    const searchParams = await props.searchParams;
+    const type = searchParams.type || 'All';
+
+    let title = 'Jadwal - Kelas Inovatif';
+    let description = 'Lihat kelas, acara, dan workshop yang akan datang. Rencanakan perjalanan pembelajaran Anda dengan jadwal interaktif kami.';
+
+    if (type !== 'All') {
+        title = `Jadwal ${type} - Kelas Inovatif`;
+        description = `Temukan jadwal ${type} terbaru di Kelas Inovatif. Bergabunglah dengan sesi-sesi inspiratif kami.`;
+    }
+
+    return {
+        title: title,
+        description: description,
+    };
+}
+
 
 export default async function SchedulePage(props: { searchParams: Promise<{ page?: string; type?: string; month?: string; year?: string }> }) {
     const searchParams = await props.searchParams;

@@ -22,6 +22,15 @@ export const metadata: Metadata = {
     template: "%s | Kelas Inovatif"
   },
   description: "Pembelajaran inovatif untuk semua",
+  keywords: ["Kelas Inovatif", "Komunitas Belajar", "Kursus Online", "Pendidikan", "Inovasi"],
+  authors: [{ name: "Tim Kelas Inovatif" }],
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
     locale: 'id_ID',
