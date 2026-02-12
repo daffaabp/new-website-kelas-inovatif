@@ -31,12 +31,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         };
     }
 
+    // Strip HTML tags from content for description fallback
+    const cleanContent = post.content?.replace(/<[^>]*>?/gm, "") || "";
+    const description = post.excerpt || cleanContent.substring(0, 200) || undefined;
+
     return {
         title: post.title,
-        description: post.excerpt || undefined,
+        description: description,
         openGraph: {
             title: post.title,
-            description: post.excerpt || "",
+            description: description || "",
             url: `/${post.slug}`,
             images: [
                 {
@@ -53,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         twitter: {
             card: 'summary_large_image',
             title: post.title,
-            description: post.excerpt || "",
+            description: description || "",
             images: [post.image || '/admin_image_placeholder.jpeg'],
         },
     };
