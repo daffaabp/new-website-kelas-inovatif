@@ -2,7 +2,12 @@ import React from "react";
 import Link from "next/link";
 import { Search, Plus, Menu } from "lucide-react";
 
-export function ScheduleHeader({ currentType = 'All' }: { currentType?: string }) {
+import { getEventTypes } from '@/app/actions/eventType';
+
+export async function ScheduleHeader({ currentType = 'All' }: { currentType?: string }) {
+    const eventTypes = await getEventTypes();
+    const categories = ["All", ...eventTypes.map(t => t.name)];
+
     return (
         <>
             <div className="md:hidden flex items-center justify-between mb-8 sticky top-0 bg-[#F3F1EC] dark:bg-[#111816] z-10 py-4 border-b border-gray-200 dark:border-gray-800">
@@ -50,14 +55,7 @@ export function ScheduleHeader({ currentType = 'All' }: { currentType?: string }
 
                 {/* Filter Chips */}
                 <div className="flex flex-wrap gap-2">
-                    {[
-                        "All",
-                        "FREE WEBINAR",
-                        "KELAS INTENSIF: CURSOR",
-                        "WORKSHOP REGULAR: SCISPACE",
-                        "WORKSHOP REGULAR: NOTEBOOKLM",
-                        "PERTEMUAN ALUMNI"
-                    ].map((category) => {
+                    {categories.map((category) => {
                         const isActive = currentType === category || (currentType === 'All' && category === 'All');
                         return (
                             <Link

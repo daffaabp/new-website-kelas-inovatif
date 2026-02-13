@@ -1,4 +1,4 @@
-import { ChevronsUpDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
 interface EventItem {
@@ -34,65 +34,86 @@ export function EventList({ events, meta }: EventListProps) {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
 
-            {/* Desktop View: Table */}
-            <div className="hidden md:block bg-white dark:bg-[#1E1E1E] rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-                <div className="overflow-x-auto">
-                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                        <thead>
-                            <tr>
-                                {['TANGGAL', 'WAKTU', 'KATEGORI', 'JUDUL', 'LOKASI', 'PEMBICARA', ''].map((header) => (
-                                    <th key={header} className="px-6 py-4 text-left text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest border-b border-gray-100 dark:border-gray-800">
-                                        <div className="flex items-center gap-1">
-                                            {header}
-                                            {header && <ChevronsUpDown className="w-3 h-3 text-gray-300" />}
-                                        </div>
-                                    </th>
-                                ))}
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                            {events.map((event) => {
-                                const eventDate = new Date(event.date).toLocaleDateString('id-ID', {
-                                    day: 'numeric',
-                                    month: 'long',
-                                    year: 'numeric'
-                                });
-                                // Simple category coloring logic (could be dynamic later)
-                                let categoryColor = 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300';
-                                if (event.type === 'Workshop') categoryColor = 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300';
-                                if (event.type === 'Seminar') categoryColor = 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300';
-                                if (event.type === 'Webinar') categoryColor = 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300';
+            {/* Desktop View: Card Layout */}
+            <div className="hidden md:block space-y-4">
+                {events.map((event) => {
+                    const eventDate = new Date(event.date);
+                    const day = eventDate.getDate();
+                    const month = eventDate.toLocaleDateString('id-ID', { month: 'long' });
+                    const year = eventDate.getFullYear();
 
-                                return (
-                                    <tr key={event.id} className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition duration-150 ease-in-out group border-b border-gray-50 dark:border-gray-800 last:border-0">
-                                        <td className="px-6 py-5 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">{eventDate}</td>
-                                        <td className="px-6 py-5 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{event.start_time} - {event.end_time} WIB</td>
-                                        <td className="px-6 py-5 whitespace-nowrap">
-                                            <span className={`inline-block text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full ${categoryColor}`}>
-                                                {event.type}
-                                            </span>
-                                        </td>
-                                        <td className="px-6 py-5">
-                                            <Link href={`/schedule/${event.id}`} className="font-bold text-gray-900 dark:text-white line-clamp-1 max-w-[200px] hover:text-eduzin-dark dark:hover:text-eduzin-gold transition-colors" title={event.title}>
-                                                {event.title}
-                                            </Link>
-                                        </td>
-                                        <td className="px-6 py-5 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{event.location}</td>
-                                        <td className="px-6 py-5 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{event.speaker_name}</td>
-                                        <td className="px-6 py-5 whitespace-nowrap text-right">
-                                            <Link
-                                                href={`/schedule/${event.id}`}
-                                                className="text-xs font-bold text-eduzin-dark dark:text-white border border-gray-200 dark:border-gray-700 px-4 py-2 rounded-full hover:bg-eduzin-dark hover:text-white dark:hover:bg-white dark:hover:text-eduzin-dark transition-colors"
-                                            >
-                                                Daftar Sekarang
-                                            </Link>
-                                        </td>
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
-                    </table>
-                </div>
+                    // Event type badge colors matching reference design
+                    let categoryColor = 'bg-gray-50 dark:bg-gray-800/30 text-gray-700 dark:text-gray-300 border-gray-100 dark:border-gray-700';
+
+                    // Match specific event types from reference
+                    if (event.type.includes('NOTEBOOKLM') || event.type.includes('SCISPACE') || event.type.includes('Workshop')) {
+                        categoryColor = 'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-100 dark:border-blue-800';
+                    } else if (event.type.includes('CURSOR') || event.type.includes('INTENSIF') || event.type.includes('Seminar')) {
+                        categoryColor = 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 border-purple-100 dark:border-purple-800';
+                    } else if (event.type.includes('WEBINAR') || event.type.includes('FREE')) {
+                        categoryColor = 'bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 border-amber-100 dark:border-amber-800';
+                    }
+
+                    return (
+                        <div
+                            key={event.id}
+                            className="group bg-white dark:bg-[#1E1E1E] rounded-2xl shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-700 p-0 overflow-hidden transition-all duration-300 flex flex-row"
+                        >
+                            {/* Date Sidebar */}
+                            <div className="w-32 bg-gray-50 dark:bg-gray-800 flex flex-col items-center justify-start pt-8 gap-0 border-r border-gray-100 dark:border-gray-700">
+                                <span className="text-3xl font-bold text-[#1e463a] dark:text-emerald-400">{day}</span>
+                                <div className="flex flex-col items-center">
+                                    <span className="text-sm font-semibold uppercase text-gray-500 dark:text-gray-400">{month}</span>
+                                    <span className="text-xs text-gray-400 dark:text-gray-500 mt-1">{year}</span>
+                                </div>
+                                <div className="w-8 h-1 bg-gray-200 dark:bg-gray-600 rounded-full mt-4 mb-2"></div>
+                                <span className="text-xs font-medium text-gray-500 dark:text-gray-400 text-center">
+                                    {event.start_time} - {event.end_time}<br />WIB
+                                </span>
+                            </div>
+
+                            {/* Event Details */}
+                            <div className="flex-1 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                                        <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium border ${categoryColor}`}>
+                                            {event.type}
+                                        </span>
+                                    </div>
+                                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#1e463a] dark:group-hover:text-emerald-400 transition-colors">
+                                        <Link href={`/schedule/${event.id}`}>
+                                            {event.title}
+                                        </Link>
+                                    </h3>
+                                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mt-4 text-sm text-gray-600 dark:text-gray-400">
+                                        <div className="flex items-center gap-2">
+                                            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                            </svg>
+                                            <span>{event.location}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                                            </svg>
+                                            <span>{event.speaker_name}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Registration Button */}
+                            <div className="p-6 pl-0 flex items-center justify-center">
+                                <Link
+                                    href={`/schedule/${event.id}`}
+                                    className="px-6 py-3 rounded-xl border-2 border-[#1e463a] text-[#1e463a] dark:text-emerald-400 dark:border-emerald-400 font-semibold hover:bg-[#1e463a] hover:text-white dark:hover:bg-emerald-400 dark:hover:text-gray-900 transition-all duration-200 shadow-sm whitespace-nowrap"
+                                >
+                                    Daftar Sekarang
+                                </Link>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
 
             {/* Mobile View: Cards */}

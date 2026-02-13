@@ -40,6 +40,7 @@ export function EditScheduleFormWrapper({ schedule, scheduleId }: EditScheduleFo
                 register_url: formData.get('register_url') as string,
                 original_price: formData.get('original_price') ? Number(formData.get('original_price')) : undefined,
                 discounted_price: formData.get('discounted_price') ? Number(formData.get('discounted_price')) : undefined,
+                status: formData.get('status') as 'published' | 'draft',
             });
 
             if (res.msg === 'success') {

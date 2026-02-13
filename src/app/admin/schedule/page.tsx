@@ -16,7 +16,7 @@ export default async function AdminSchedulePage({
 
     // Fetch data in parallel
     const [schedulesData, stats] = await Promise.all([
-        getSchedules(1, 100, type),
+        getSchedules(1, 100, type, undefined, undefined, 'all'),
         getScheduleStats()
     ]);
 

@@ -5,11 +5,15 @@ import { revalidatePath } from 'next/cache';
 import { Prisma } from '@prisma/client';
 import { saveFile, deleteFile } from '@/lib/storage';
 
-export async function getSchedules(page = 1, limit = 6, type?: string, month?: number, year?: number) {
+export async function getSchedules(page = 1, limit = 6, type?: string, month?: number, year?: number, status: 'published' | 'draft' | 'all' = 'published') {
     try {
         const offset = (page - 1) * limit;
 
         const where: Prisma.ScheduleWhereInput = {};
+
+        if (status !== 'all') {
+            where.status = status;
+        }
 
         if (type && type !== 'All') {
             where.type = type;
@@ -54,6 +58,7 @@ export async function getSchedules(page = 1, limit = 6, type?: string, month?: n
             discounted_price: schedule.discountedPrice ?? undefined,
             created_at: schedule.createdAt.toISOString(),
             updated_at: schedule.updatedAt.toISOString(),
+            status: schedule.status,
         }));
 
         return {
@@ -98,6 +103,7 @@ export async function getScheduleById(id: number) {
             discounted_price: schedule.discountedPrice ?? undefined,
             created_at: schedule.createdAt.toISOString(),
             updated_at: schedule.updatedAt.toISOString(),
+            status: schedule.status,
         };
     } catch (error) {
         console.error('Error fetching schedule by id:', error);
@@ -131,6 +137,7 @@ interface ScheduleData {
     discounted_price?: number;
     speaker_image_file?: File;
     featured_image_file?: File;
+    status?: 'published' | 'draft';
 }
 
 export async function createSchedule(data: ScheduleData) {
@@ -168,6 +175,7 @@ export async function createSchedule(data: ScheduleData) {
                 registerUrl: data.register_url,
                 originalPrice: parseIntSafe(data.original_price),
                 discountedPrice: parseIntSafe(data.discounted_price),
+                status: data.status || 'published',
             },
         });
 
@@ -225,6 +233,7 @@ export async function updateSchedule(id: number, data: Partial<ScheduleData>) {
                 registerUrl: data.register_url,
                 originalPrice: parseIntSafe(data.original_price),
                 discountedPrice: parseIntSafe(data.discounted_price),
+                status: data.status,
             },
         });
 
@@ -282,6 +291,7 @@ export async function getLatestSchedules(limit: number = 10) {
                     gte: startOfCurrentMonth,
                     lte: endOfNextMonth,
                 },
+                status: 'published',
             },
             orderBy: { date: 'asc' }, // Show nearest events first
             take: limit,
@@ -307,6 +317,7 @@ export async function getLatestSchedules(limit: number = 10) {
             discounted_price: schedule.discountedPrice ?? undefined,
             created_at: schedule.createdAt.toISOString(),
             updated_at: schedule.updatedAt.toISOString(),
+            status: schedule.status,
         }));
     } catch (error) {
         console.error('Error fetching latest schedules:', error);
