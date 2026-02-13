@@ -21,6 +21,7 @@ interface Schedule {
     end_time: string;
     location: string;
     description?: string;
+    status: 'published' | 'draft';
 }
 
 interface ScheduleTableProps {
@@ -79,6 +80,9 @@ export function ScheduleTable({ schedules }: ScheduleTableProps) {
                             </th>
                             <th className="px-6 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-left">
                                 Location
+                            </th>
+                            <th className="px-6 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-left">
+                                Status
                             </th>
                             <th className="px-6 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-center">
                                 Actions
@@ -145,6 +149,14 @@ export function ScheduleTable({ schedules }: ScheduleTableProps) {
                                     </td>
                                     <td className="px-6 py-4 align-middle text-sm text-gray-600 dark:text-gray-400">
                                         {schedule.location}
+                                    </td>
+                                    <td className="px-6 py-4 align-middle">
+                                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${schedule.status === 'published'
+                                                ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
+                                                : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
+                                            }`}>
+                                            {schedule.status === 'published' ? 'Published' : 'Draft'}
+                                        </span>
                                     </td>
                                     <td className="px-6 py-4 align-middle text-center">
                                         <div className="flex items-center justify-center gap-2">

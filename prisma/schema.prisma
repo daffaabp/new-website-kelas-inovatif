@@ -28,11 +28,13 @@ model Schedule {
   registerUrl     String?  @map("register_url")
   originalPrice   Int?     @map("original_price")
   discountedPrice Int?     @map("discounted_price")
+  status          ScheduleStatus @default(published)
   createdAt       DateTime @default(now()) @map("created_at")
   updatedAt       DateTime @updatedAt @map("updated_at")
 
   @@index([date(sort: Asc)]) // For upcoming events
   @@index([type, date]) // For filtering by event type
+  @@index([status, date]) // For filtering by status
   @@map("schedules")
 }
 
@@ -71,4 +73,18 @@ model Email {
 enum BlogStatus {
   published
   draft
+}
+
+enum ScheduleStatus {
+  published
+  draft
+}
+
+model EventType {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("event_types")
 }
