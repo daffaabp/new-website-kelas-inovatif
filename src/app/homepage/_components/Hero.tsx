@@ -1,15 +1,19 @@
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function Hero() {
     return (
         <header className="relative h-[85vh] w-full flex items-end pb-20 overflow-hidden">
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
-                <img
+                <Image
                     src="/community/komunitas_kelasinovatif.avif"
                     alt="Campus"
                     className="w-full h-full object-cover"
+                    width={1920}
+                    height={1080}
+                    priority
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent"></div>
             </div>
