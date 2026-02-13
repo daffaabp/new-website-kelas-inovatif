@@ -60,7 +60,7 @@ export const stories: AlumniStory[] = [
         id: 'tri-nugraha',
         name: 'Dr. Tri Nugraha Sakti, MSI',
         title: 'Lecturer LSPR Institute',
-        photo: 'https://ui-avatars.com/api/?name=Tri+Nugraha&background=1C302B&color=fff', // Placeholder
+        photo: '/images/testimonials/Dr. Tri Nugraha Sakti, MSI.avif',
         persona: 'takut-plagiasi',
         personaLabel: 'Takut Plagiasi',
         quote: "Saya udah coba macem-macem tool untuk mengatasi plagiasi. Cuma Cursor yang bisa konsisten 5% buat standar Scopus.",
@@ -108,7 +108,7 @@ export const stories: AlumniStory[] = [
         id: 'rakhmadi-irfansyah',
         name: 'Rakhmadi Irfansyah Putra, S.Kom., MMSI',
         title: 'Dosen ITPLN',
-        photo: 'https://ui-avatars.com/api/?name=Rakhmadi+Irfansyah&background=1C302B&color=fff', // Placeholder
+        photo: '/images/testimonials/Rakhmadi Irfansyah Putra, S.Kom., MMSI.avif',
         persona: 'dosen-muda',
         personaLabel: 'Dosen Muda',
         quote: "Lulus sidang proposal pas awal semester 2. Ini bukan hoki, tapi karena sistemnya emang bisa diulang (repeatable).",
