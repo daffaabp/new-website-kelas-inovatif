@@ -166,6 +166,15 @@
   --color-courses-text-dark: #E5E5E5;
   --color-courses-muted-light: #6B7280;
   --color-courses-muted-dark: #9CA3AF;
+
+  /* Partnership Page Colors - Aligned with About */
+  --color-partnership-primary: #1C3026;
+  --color-partnership-primary-hover: #14231c;
+  --color-partnership-accent: #D4B692;
+  --color-partnership-bg-cream: #F9F8F6;
+  --color-partnership-bg-paper: #FFFFFF;
+  --color-partnership-text-main: #1A1A1A;
+  --color-partnership-text-muted: #666666;
 }
 
 :root {

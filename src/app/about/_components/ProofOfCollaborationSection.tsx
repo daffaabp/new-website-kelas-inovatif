@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { X } from "lucide-react";
+import Link from "next/link";
+import { X, ArrowRight } from "lucide-react";
 
 interface CaseStudy {
     id: string;
@@ -16,36 +17,13 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
     {
-        id: "secata",
-        label: "SECATA",
-        category: "Pendidikan Tamtama",
-        title: "SECATA: Penulisan",
-        titleHighlight: "Laporan Cerdas",
-        description:
-            "Membekali Sekolah Calon Tamtama dengan alat AI untuk penulisan laporan profesional dan komunikasi. Meningkatkan literasi digital prajurit masa depan untuk menghadapi tantangan modern.",
-        images: [
-            {
-                src: "/images/tni/secata/secata1.avif",
-                alt: "Peserta seminar tamtama menyimak dengan seksama",
-            },
-            {
-                src: "/images/tni/secata/secata2.avif",
-                alt: "Proses penulisan laporan oleh peserta",
-            },
-            {
-                src: "/images/tni/secata/secata5.avif",
-                alt: "Peserta menggunakan tablet untuk pembelajaran digital",
-            },
-        ],
-    },
-    {
         id: "rindam",
         label: "Rindam IV/DIP",
         category: "AI untuk Tugas Kantor",
         title: "Rindam IV/DIP:",
         titleHighlight: "AI untuk Tugas Kantor",
         description:
-            "Resimen Induk Kodam IV/Diponegoro mengimplementasikan AI untuk meningkatkan efisiensi tugas administratif dan operasional kantor. Transformasi digital yang mendukung kinerja personel militer.",
+            "Di lingkungan Rindam IV/Diponegoro, kami hadir untuk mengintegrasikan AI ke dalam rutinitas kerja harian. Pelatihan ini bukan sekadar tentang teknologi, melainkan tentang bagaimana efisiensi administratif dapat dicapai melalui otomatisasi cerdas—memungkinkan personel untuk bekerja lebih taktis dan produktif dalam menjalankan tugas kedinasan.",
         images: [
             {
                 src: "/images/tni/rindam-iv/rindam1.avif",
@@ -62,13 +40,36 @@ const caseStudies: CaseStudy[] = [
         ],
     },
     {
+        id: "secata",
+        label: "SECATA",
+        category: "Pendidikan Tamtama",
+        title: "SECATA: Penulisan",
+        titleHighlight: "Laporan Cerdas",
+        description:
+            "Sebuah kehormatan bagi kami untuk membersamai para siswa Sekolah Calon Tamtama dalam mengadopsi teknologi masa depan. Program ini difokuskan pada peningkatan literasi digital dan pemanfaatan AI untuk penyusunan laporan yang lebih cerdas dan terstruktur, membekali prajurit muda dengan kompetensi modern tanpa meninggalkan jati diri militer.",
+        images: [
+            {
+                src: "/images/tni/secata/secata1.avif",
+                alt: "Peserta seminar tamtama menyimak dengan seksama",
+            },
+            {
+                src: "/images/tni/secata/secata2.avif",
+                alt: "Proses penulisan laporan oleh peserta",
+            },
+            {
+                src: "/images/tni/secata/secata5.avif",
+                alt: "Peserta menggunakan tablet untuk pembelajaran digital",
+            },
+        ],
+    },
+    {
         id: "dodiklatpur",
         label: "DODIKLATPUR",
         category: "AI untuk Tugas Kantor",
         title: "DODIKLATPUR:",
         titleHighlight: "Penulisan & Desain Grafis",
         description:
-            "Depo Pendidikan Latihan dan Pertempuran memanfaatkan AI untuk meningkatkan kemampuan penulisan dan desain grafis personel. Efisiensi tugas kantor melalui teknologi AI yang aplikatif dan mudah dipelajari.",
+            "Kreativitas dan teknologi berpadu di DODIKLATPUR. Melalui pelatihan intensif, kami memperkenalkan cara baru dalam desain grafis dan penulisan berbasis AI. Hasilnya adalah peningkatan kualitas output visual dan tekstual, membuktikan bahwa inovasi teknologi dapat menjadi alat pendukung yang handal dalam setiap aspek tugas operasional.",
         images: [
             {
                 src: "/images/tni/dodiklatpur/dodiklatpur1.avif",
@@ -91,7 +92,7 @@ const caseStudies: CaseStudy[] = [
         title: "Deninteldam:",
         titleHighlight: "Laporan & Pengenalan OSINT",
         description:
-            "Detasemen Intelijen Komando Daerah Militer memanfaatkan AI untuk pembuatan laporan yang akurat dan efisien, serta pengenalan dasar Open Source Intelligence (OSINT) sebagai bekal kompetensi intelijen modern.",
+            "Mendukung ketajaman analisis strategis di lini intelijen. Kerjasama kami dengan Deninteldam berfokus pada pemanfaatan AI untuk penyusunan laporan presisi serta pengenalan Open Source Intelligence (OSINT). Ini adalah langkah konkret dalam memadukan keahlian intelijen konvensional dengan kecepatan dan akurasi teknologi data modern.",
         images: [
             {
                 src: "/images/tni/danintel/danintel1.avif",
@@ -126,11 +127,10 @@ export function ProofOfCollaborationSection() {
                 {/* Section Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <h2 className="font-serif text-3xl md:text-4xl font-bold text-about-primary dark:text-white mb-4">
-                        Bukti Kolaborasi
+                        Sinergi Tanpa Batas
                     </h2>
                     <p className="text-gray-600 dark:text-gray-400 text-lg">
-                        Studi kasus nyata dari program kerjasama kami bersama
-                        berbagai institusi di Indonesia.
+                        Dari koridor kampus hingga markas komando, semangat inovasi kami tak mengenal batas institusi. Kami bangga dapat melangkah bersama universitas ternama, instansi pemerintah, dan satuan militer dalam satu misi: menghadirkan transformasi digital yang inklusif dan berdampak nyata bagi kemajuan bangsa.
                     </p>
                 </div>
 
@@ -276,6 +276,16 @@ export function ProofOfCollaborationSection() {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div className="text-center mt-12 md:mt-20 relative z-10">
+                <Link
+                    className="inline-flex items-center px-6 py-3 bg-about-primary text-white rounded-full font-medium hover:bg-about-primary/90 transition-colors group shadow-lg shadow-about-primary/20"
+                    href="/contact"
+                >
+                    Hubungi Kami untuk Kerjasama
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
             </div>
 
             {/* Lightbox Modal */}

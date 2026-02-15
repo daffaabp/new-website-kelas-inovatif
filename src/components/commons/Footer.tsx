@@ -49,6 +49,7 @@ export function Footer() {
                         <ul className="space-y-4 text-sm text-gray-600 dark:text-gray-400">
                             <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/">Beranda</Link></li>
                             <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/about">Tentang Kami</Link></li>
+                            <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/partnership">Kerja Sama</Link></li>
                             <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/community">Komunitas</Link></li>
                             <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/program">Program</Link></li>
                             <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/bootcamp">Bootcamp</Link></li>

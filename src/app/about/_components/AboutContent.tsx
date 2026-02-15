@@ -15,8 +15,8 @@ export function AboutContent() {
             <AboutHero />
             <MissionSection />
             <ValuesSection />
-            <PartnershipSection />
-            <ProofOfCollaborationSection />
+            {/* <PartnershipSection /> */}
+            {/* <ProofOfCollaborationSection /> */}
             <Footer />
         </main>
     );

@@ -71,15 +71,6 @@ export function PartnershipSection() {
                         </ul>
                     </div>
                 </div>
-                <div className="text-center">
-                    <Link
-                        className="inline-flex items-center px-6 py-3 bg-about-primary text-white rounded-full font-medium hover:bg-about-primary/90 transition-colors group"
-                        href="/contact"
-                    >
-                        Hubungi Kami untuk Kerjasama
-                        <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                </div>
             </div>
         </section>
     );
