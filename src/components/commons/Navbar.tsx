@@ -10,8 +10,10 @@ export function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [programsDropdownOpen, setProgramsDropdownOpen] = useState(false);
+    const [communityDropdownOpen, setCommunityDropdownOpen] = useState(false);
     const [informationDropdownOpen, setInformationDropdownOpen] = useState(false);
     const dropdownTimerRef = useRef<NodeJS.Timeout | null>(null);
+    const communityDropdownTimerRef = useRef<NodeJS.Timeout | null>(null);
     const infoDropdownTimerRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
@@ -41,8 +43,68 @@ export function Navbar() {
                 <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700 dark:text-gray-300">
                     <Link href="/" className="hover:opacity-75 transition-opacity cursor-pointer">BERANDA</Link>
                     <Link href="/about" className="hover:opacity-75 transition-opacity cursor-pointer">TENTANG KAMI</Link>
-                    <Link href="/community" className="hover:opacity-75 transition-opacity cursor-pointer">KOMUNITAS</Link>
-                    <Link href="/user-story" className="hover:opacity-75 transition-opacity cursor-pointer">USER STORY</Link>
+
+                    <Link href="/partnership" className="hover:opacity-75 transition-opacity cursor-pointer">KERJA SAMA</Link>
+
+                    {/* Community Dropdown */}
+                    <div
+                        className="relative"
+                        onMouseEnter={() => {
+                            if (communityDropdownTimerRef.current) {
+                                clearTimeout(communityDropdownTimerRef.current);
+                            }
+                            setCommunityDropdownOpen(true);
+                        }}
+                        onMouseLeave={() => {
+                            communityDropdownTimerRef.current = setTimeout(() => {
+                                setCommunityDropdownOpen(false);
+                            }, 300);
+                        }}
+                    >
+                        <button
+                            className="flex items-center gap-1 hover:opacity-75 transition-opacity cursor-pointer py-2"
+                            onClick={() => setCommunityDropdownOpen(!communityDropdownOpen)}
+                        >
+                            KOMUNITAS
+                            <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${communityDropdownOpen ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {/* Dropdown Menu */}
+                        {communityDropdownOpen && (
+                            <div className="absolute top-full left-0 pt-2 animate-in fade-in slide-in-from-top-2 duration-200">
+                                <div className="w-64 bg-contact-secondary/95 dark:bg-contact-bg-dark/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 overflow-hidden">
+                                    {/* Decorative gradient overlay */}
+                                    <div className="absolute inset-0 bg-linear-to-br from-eduzin-dark/5 to-transparent pointer-events-none"></div>
+
+                                    <div className="relative py-2">
+                                        <Link
+                                            href="/community"
+                                            className="group block px-5 py-3.5 text-gray-700 dark:text-gray-300 hover:bg-linear-to-r hover:from-eduzin-dark/10 hover:to-eduzin-dark/5 dark:hover:from-eduzin-dark/20 dark:hover:to-eduzin-dark/10 transition-all duration-200 cursor-pointer relative overflow-hidden"
+                                        >
+                                            <div className="absolute left-0 top-0 h-full w-1 bg-linear-to-b from-eduzin-dark to-eduzin-dark/50 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-200"></div>
+                                            <div className="flex items-center gap-3">
+                                                <Users className="w-4 h-4 text-eduzin-dark group-hover:scale-110 transition-transform duration-200" />
+                                                <span className="font-medium">Komunitas Utama</span>
+                                            </div>
+                                        </Link>
+
+                                        <div className="mx-4 my-1 h-px bg-linear-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent"></div>
+
+                                        <Link
+                                            href="/user-story"
+                                            className="group block px-5 py-3.5 text-gray-700 dark:text-gray-300 hover:bg-linear-to-r hover:from-eduzin-dark/10 hover:to-eduzin-dark/5 dark:hover:from-eduzin-dark/20 dark:hover:to-eduzin-dark/10 transition-all duration-200 cursor-pointer relative overflow-hidden"
+                                        >
+                                            <div className="absolute left-0 top-0 h-full w-1 bg-linear-to-b from-eduzin-dark to-eduzin-dark/50 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-200"></div>
+                                            <div className="flex items-center gap-3">
+                                                <Newspaper className="w-4 h-4 text-eduzin-dark group-hover:scale-110 transition-transform duration-200" />
+                                                <span className="font-medium">User Story</span>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
 
                     {/* Programs Dropdown */}
                     <div
@@ -226,9 +288,26 @@ export function Navbar() {
             {mobileMenuOpen && (
                 <div className="md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-lg py-8 px-4 flex flex-col gap-4 text-center">
                     <Link href="/" className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Beranda</Link>
+
                     <Link href="/about" className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Tentang Kami</Link>
-                    <Link href="/community" className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Komunitas</Link>
-                    <Link href="/user-story" className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer" onClick={() => setMobileMenuOpen(false)}>User Story</Link>
+                    <Link href="/partnership" className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Kerja Sama</Link>
+
+                    {/* Community Dropdown Mobile */}
+                    <div className="flex flex-col gap-2">
+                        <button
+                            className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer flex items-center justify-center gap-1"
+                            onClick={() => setCommunityDropdownOpen(!communityDropdownOpen)}
+                        >
+                            Komunitas
+                            <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${communityDropdownOpen ? 'rotate-180' : ''}`} />
+                        </button>
+                        {communityDropdownOpen && (
+                            <div className="flex flex-col gap-2 pl-4 bg-gray-50 dark:bg-gray-800 py-2 rounded-lg">
+                                <Link href="/community" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Komunitas Utama</Link>
+                                <Link href="/user-story" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>User Story</Link>
+                            </div>
+                        )}
+                    </div>
 
                     {/* Programs Dropdown Mobile */}
                     <div className="flex flex-col gap-2">

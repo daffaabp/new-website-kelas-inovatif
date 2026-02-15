@@ -6,6 +6,7 @@ import { AboutHero } from "./AboutHero";
 import { MissionSection } from "./MissionSection";
 import { ValuesSection } from "./ValuesSection";
 import { PartnershipSection } from "./PartnershipSection";
+import { ProofOfCollaborationSection } from "./ProofOfCollaborationSection";
 
 export function AboutContent() {
     return (
@@ -14,7 +15,8 @@ export function AboutContent() {
             <AboutHero />
             <MissionSection />
             <ValuesSection />
-            <PartnershipSection />
+            {/* <PartnershipSection /> */}
+            {/* <ProofOfCollaborationSection /> */}
             <Footer />
         </main>
     );

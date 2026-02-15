@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SECATA Case Study Indonesia</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c55911",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221710",
+                        "primary-dark": "#a0460b",
+                        "neutral-light": "#e8e6e3", // Derived from #f8f7f6 + primary tint
+                        "neutral-dark": "#3a2d25", // Derived from #221710 + primary tint
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+
+        /* Subtle texture for background interest */
+        .bg-pattern {
+            background-image: radial-gradient(#c55911 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.03;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 min-h-screen flex items-center justify-center font-display antialiased">
+    <!-- Main Container -->
+    <main class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-24">
+        <!-- Decorative Background Pattern -->
+        <div class="absolute inset-0 bg-pattern pointer-events-none z-0"></div>
+        <!-- Editorial Row -->
+        <section class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <!-- Left Column: Image Grid -->
+            <div class="relative group">
+                <!-- Decorative backdrop element -->
+                <div
+                    class="absolute -inset-4 bg-primary/5 dark:bg-primary/10 rounded-xl -rotate-1 scale-105 z-0 transition-transform duration-500 group-hover:rotate-0">
+                </div>
+                <div class="relative z-10 grid grid-cols-2 grid-rows-2 gap-4 h-[500px] w-full">
+                    <!-- Main Large Image -->
+                    <div
+                        class="col-span-2 row-span-1 md:col-span-1 md:row-span-2 relative overflow-hidden rounded-lg shadow-lg">
+                        <img alt="Large photo of enlisted candidates in a seminar listening attentively"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105 filter grayscale-[20%] hover:grayscale-0"
+                            data-alt="Large photo of enlisted candidates in a seminar listening attentively"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWyKPSxXlnxsCUMReqye0RdEG6G_9WkVRGadD1EFfBpdPst5puLOsieJ9BFIzZxxngrziGw_il6bJ5O74Uoi7mfJ-w9qWrPbh1R-kEwQqCPt9i_eU-f_dLD4dn8gUDvD2dz8SkKeCdYUZsLTdwQMtKra8Hit1bxUqiBuqqUAVfPNHWb1PTWV-LMkXnG2aiP2GbMBFmrbORVlSXpQ_I9ZWlF5JI8sdp7bz9pm3Z9Pq2r7icEDhfeYCpJ-eEmAyDYEdCfHO2ovL757Sb" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+                        <div
+                            class="absolute bottom-4 left-4 text-white text-xs font-bold tracking-wider uppercase opacity-90">
+                            Sesi Seminar</div>
+                    </div>
+                    <!-- Top Small Image -->
+                    <div class="col-span-1 row-span-1 relative overflow-hidden rounded-lg shadow-md hidden md:block">
+                        <img alt="Close up of hands writing reports on paper"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-110 filter sepia-[10%]"
+                            data-alt="Close up of hands writing reports on paper"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9XIAXnIfgF6fJ3XhcsL_z12N7MBOwtbeGG_IItt0Or9zPLYjXOwH1mkRX3Pnx0HJ01zPMU6hEvmFY4gvF_YWyA-7h-DWF_YO6bX02z04SvZx1LVYXiTmvklKFC85_dmX-PVb17Bmlf3n50YmCwhJGVvjS3UAxTbaO-n4e8d2lAaZrgfzV8Cki_A9bo8kCWM2cPs4Od7SyVYzu0p0haYgxubEei05A3ahRrFEyxAV4VDInspQP8yPpp3Xnw8A2xsr__ZRB7UYkFWZY" />
+                    </div>
+                    <!-- Bottom Small Image -->
+                    <div class="col-span-1 row-span-1 relative overflow-hidden rounded-lg shadow-md hidden md:block">
+                        <img alt="Soldier using tablet interface for digital learning"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-110 filter contrast-125"
+                            data-alt="Soldier using tablet interface for digital learning"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWGVCeSwuj8sNunMPsNLUermdv2ZGFD2NgehLixOR2FwKkDplMxM-Booi3jVeXngLXkkrwC4Sms3_jlAM3zQDnYdQd2EDTv88cgzOrf8KUOn8YtiTBpB_z2Qe3JzlnwP09QO48e_HYY8lchtBnG8ML9Zjw0QbTWRV5NUMqVwe-RS0cW2fsPJEhK5tbEB0gnsR5GBMLljHmYQXM5T7l-LJzE3Tmtk71kbh7B7VlumX1kWcYZIsY6rMlgmU4jknoEF-sVM8iGnMVixKP" />
+                        <!-- Overlay tint -->
+                        <div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: Content -->
+            <div class="flex flex-col justify-center space-y-8 relative">
+                <!-- Vertical Decorative Line -->
+                <div
+                    class="absolute -left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary/0 via-primary/30 to-primary/0 hidden lg:block">
+                </div>
+                <div class="space-y-4">
+                    <!-- Category Label -->
+                    <div class="flex items-center space-x-3">
+                        <span class="h-px w-8 bg-primary"></span>
+                        <span class="text-primary font-bold text-sm tracking-widest uppercase">Pendidikan Tamtama</span>
+                    </div>
+                    <!-- Title -->
+                    <h2
+                        class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight tracking-tight">
+                        SECATA: Penulisan <br />
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-dark">Laporan
+                            Cerdas</span>
+                    </h2>
+                </div>
+                <!-- Body Text -->
+                <p
+                    class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed border-l-2 border-neutral-light dark:border-neutral-dark pl-6">
+                    Membekali Sekolah Calon Tamtama dengan alat AI untuk penulisan laporan profesional dan komunikasi.
+                    Meningkatkan literasi digital prajurit masa depan untuk menghadapi tantangan modern.
+                </p>
+                <!-- Metric Badge & Details -->
+                <div class="flex flex-wrap items-center gap-6 py-4">
+                    <div
+                        class="bg-white dark:bg-neutral-dark border border-neutral-light dark:border-neutral-dark/50 rounded-lg p-4 shadow-sm flex items-center space-x-4">
+                        <div class="bg-primary/10 p-3 rounded-full text-primary">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-gray-900 dark:text-white">1.200+</p>
+                            <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                                Tamtama Dilatih</p>
+                        </div>
+                    </div>
+                    <div class="h-12 w-px bg-gray-200 dark:bg-gray-700 hidden sm:block"></div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400">
+                        <p class="mb-1"><span class="font-bold text-gray-900 dark:text-white">Lokasi:</span> Gombong,
+                            Jawa Tengah</p>
+                        <p><span class="font-bold text-gray-900 dark:text-white">Durasi:</span> 3 Bulan Intensif</p>
+                    </div>
+                </div>
+                <!-- Link Action -->
+                <div class="pt-2">
+                    <a class="inline-flex items-center group text-primary font-bold text-lg hover:text-primary-dark transition-colors"
+                        href="#">
+                        <span>Unduh Hasil Program</span>
+                        <span class="ml-2 transform transition-transform group-hover:translate-x-1">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"></path>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Contextual Map Hint (Optional Subtle Background Element) -->
+    <div class="fixed bottom-0 right-0 w-1/3 h-1/3 opacity-5 dark:opacity-10 pointer-events-none z-0">
+        <img alt="Abstract map outline of Indonesia" class="w-full h-full object-contain object-bottom-right"
+            data-alt="Abstract map outline of Indonesia"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUf7Yr03hTftgOF2Tuv_a8I2k3ojqI4JgZEW6F6E5vGvs6JumM4C-j_t1qR1tWbp1W9gnm_zq6_r9tNmTeRsdDFvyX6DskvdrSq6lxSd_Uq2S4S700x6gIFEB4zAHAOm_w_wjBv0Dlw0ejLtq3go2hWN2JLAJ9Q0PedDgL99VVtqT1w-702wEwKt8ITxNrqqj3nbD1zagmn0pzrlOwu2pUuRE-mjIvc5b9OBheA-nYhiYELG_TR0DvUKZcLoSSOfLtzWogsQll96e5" />
+    </div>
+    <script>
+        // Simple script to toggle dark mode for demonstration purposes if needed
+        // In a real app, this would be handled by system preference or a toggle switch
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</body>
+
+</html>
