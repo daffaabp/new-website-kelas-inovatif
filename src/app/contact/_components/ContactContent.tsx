@@ -6,6 +6,7 @@ import { Footer } from "@/components/commons/Footer";
 import { AIChatBot } from "@/components/commons/AIChatBot";
 import { ContactHero } from "./ContactHero";
 import { ContactFormSection } from "./ContactFormSection";
+import { ContactMap } from "./ContactMap";
 import { ContactFAQ } from "./ContactFAQ";
 import { BlogSection, LatestBlog } from "@/components/commons/BlogSection";
 import { NewsletterSection } from "@/components/commons/NewsletterSection";
@@ -34,6 +35,7 @@ export function ContactContent() {
             <Navbar />
             <ContactHero />
             <ContactFormSection />
+            <ContactMap />
             <ContactFAQ />
             <BlogSection blogs={blogs} />
             <NewsletterSection />
