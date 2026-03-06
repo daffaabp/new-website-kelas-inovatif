@@ -17,8 +17,27 @@ import { AIChatBot } from '@/components/commons/AIChatBot';
 import { CourseDetailView } from './_components/CourseDetailView';
 import { Course } from './types';
 import { LatestBlogSection } from './_components/LatestBlogSection';
+import { LatestBlog } from '@/components/commons/BlogSection';
 
-export default function HomePage() {
+interface ScheduleData {
+  id: number;
+  title: string;
+  date: string;
+  start_time: string;
+  type: string;
+  location: string;
+  speaker_name: string;
+  speaker_role?: string;
+  speaker_image?: string;
+  [key: string]: unknown;
+}
+
+interface HomePageProps {
+  initialSchedules?: ScheduleData[];
+  initialBlogs?: LatestBlog[];
+}
+
+export default function HomePage({ initialSchedules, initialBlogs }: HomePageProps) {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
 
   // Scroll to top when switching views
@@ -46,11 +65,11 @@ export default function HomePage() {
       <FeaturesSection />
       {/* <Testimonials /> */}
       <PromoSection />
-      <EventSection />
+      <EventSection initialEvents={initialSchedules} />
       <FaqSection />
       {/* <NewsSection /> */}
       <div id="contact">
-        <LatestBlogSection />
+        <LatestBlogSection initialBlogs={initialBlogs} />
         <NewsletterSection />
         <Footer />
       </div>
