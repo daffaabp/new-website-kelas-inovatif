@@ -74,31 +74,54 @@ const getEventTypeStyles = (type: string) => {
   };
 };
 
-export function EventSection() {
-  const [events, setEvents] = useState<EventData[]>([]);
-  const [loading, setLoading] = useState(true);
+interface ScheduleInput {
+  id: number;
+  title: string;
+  date: string;
+  start_time: string;
+  type: string;
+  location: string;
+  speaker_name: string;
+  speaker_role?: string;
+  speaker_image?: string;
+  [key: string]: unknown;
+}
+
+function mapScheduleToEvent(schedule: ScheduleInput): EventData {
+  return {
+    id: schedule.id,
+    title: schedule.title,
+    date: schedule.date,
+    start_time: schedule.start_time,
+    type: schedule.type || 'Event',
+    price: 'Gratis Member',
+    location: schedule.location || 'Online via Zoom',
+    speaker: {
+      name: schedule.speaker_name || 'TBA',
+      role: schedule.speaker_role || 'Pembicara',
+      avatar: schedule.speaker_image || 'https://i.pravatar.cc/100?img=32'
+    }
+  };
+}
+
+export function EventSection({ initialEvents }: { initialEvents?: ScheduleInput[] }) {
+  const [events, setEvents] = useState<EventData[]>(
+    initialEvents ? initialEvents.map(mapScheduleToEvent) : []
+  );
+  const [loading, setLoading] = useState(!initialEvents || initialEvents.length === 0);
 
   useEffect(() => {
+    // Jika data sudah diberikan dari server via props, skip client-side fetch
+    if (initialEvents && initialEvents.length > 0) {
+      setLoading(false);
+      return;
+    }
+
     async function fetchEvents() {
       try {
         setLoading(true);
         const schedules = await getLatestSchedules(8);
-
-        const mappedEvents: EventData[] = schedules.map((schedule) => ({
-          id: schedule.id,
-          title: schedule.title,
-          date: schedule.date,
-          start_time: schedule.start_time,
-          type: schedule.type || 'Event',
-          price: 'Gratis Member',
-          location: schedule.location || 'Online via Zoom',
-          speaker: {
-            name: schedule.speaker_name || 'TBA',
-            role: schedule.speaker_role || 'Pembicara',
-            avatar: schedule.speaker_image || 'https://i.pravatar.cc/100?img=32' // Fallback avatar
-          }
-        }));
-
+        const mappedEvents = schedules.map(mapScheduleToEvent);
         setEvents(mappedEvents);
       } catch (error) {
         console.error('Error fetching events:', error);
@@ -109,7 +132,7 @@ export function EventSection() {
     }
 
     fetchEvents();
-  }, []);
+  }, [initialEvents]);
 
   return (
     <section className="bg-white py-20">

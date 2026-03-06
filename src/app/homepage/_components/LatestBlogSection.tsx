@@ -4,11 +4,21 @@ import { useEffect, useState } from 'react';
 import { getLatestBlogs } from '@/app/actions/blog';
 import { BlogSection, LatestBlog } from '@/components/commons/BlogSection';
 
-export function LatestBlogSection() {
-    const [blogs, setBlogs] = useState<LatestBlog[]>([]);
-    const [loading, setLoading] = useState(true);
+interface LatestBlogSectionProps {
+    initialBlogs?: LatestBlog[];
+}
+
+export function LatestBlogSection({ initialBlogs }: LatestBlogSectionProps) {
+    const [blogs, setBlogs] = useState<LatestBlog[]>(initialBlogs || []);
+    const [loading, setLoading] = useState(!initialBlogs || initialBlogs.length === 0);
 
     useEffect(() => {
+        // Jika data sudah diberikan dari server via props, skip client-side fetch
+        if (initialBlogs && initialBlogs.length > 0) {
+            setLoading(false);
+            return;
+        }
+
         async function fetchBlogs() {
             try {
                 setLoading(true);
@@ -23,7 +33,7 @@ export function LatestBlogSection() {
         }
 
         fetchBlogs();
-    }, []);
+    }, [initialBlogs]);
 
     if (loading) {
         return (
@@ -48,3 +58,4 @@ export function LatestBlogSection() {
 
     return <BlogSection blogs={blogs} />;
 }
+
