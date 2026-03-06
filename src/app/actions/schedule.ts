@@ -275,21 +275,14 @@ export async function deleteSchedule(id: number) {
 export async function getLatestSchedules(limit: number = 10) {
     try {
         const now = new Date();
-        const currentYear = now.getFullYear();
-        const currentMonth = now.getMonth();
-
-        // Start of Current Month (1st day)
-        const startOfCurrentMonth = new Date(currentYear, currentMonth, 1, 0, 0, 0, 0);
-
-        // End of Next Month
-        // new Date(year, month + 2, 0) gives the last day of (month + 1).
-        const endOfNextMonth = new Date(currentYear, currentMonth + 2, 0, 23, 59, 59, 999);
+        const sevenDaysAgo = new Date(now);
+        sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+        sevenDaysAgo.setHours(0, 0, 0, 0);
 
         const schedules = await prisma.schedule.findMany({
             where: {
                 date: {
-                    gte: startOfCurrentMonth,
-                    lte: endOfNextMonth,
+                    gte: sevenDaysAgo,
                 },
                 status: 'published',
             },
