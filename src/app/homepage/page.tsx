@@ -27,8 +27,8 @@ interface ScheduleData {
   type: string;
   location: string;
   speaker_name: string;
-  speaker_role?: string;
-  speaker_image?: string;
+  speaker_role?: string | null;
+  speaker_image?: string | null;
   [key: string]: unknown;
 }
 
