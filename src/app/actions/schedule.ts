@@ -135,22 +135,11 @@ interface ScheduleData {
     register_url?: string;
     original_price?: number;
     discounted_price?: number;
-    speaker_image_file?: File;
-    featured_image_file?: File;
     status?: 'published' | 'draft';
 }
 
 export async function createSchedule(data: ScheduleData) {
     try {
-        // Handle speaker image upload
-        if (data.speaker_image_file && data.speaker_image_file instanceof File && data.speaker_image_file.size > 0) {
-            data.speaker_image = await saveFile(data.speaker_image_file, 'speaker');
-        }
-
-        // Handle featured image upload
-        if (data.featured_image_file && data.featured_image_file instanceof File && data.featured_image_file.size > 0) {
-            data.image = await saveFile(data.featured_image_file, 'schedule');
-        }
 
         // Basic validation
         if (!data.title || !data.date || !data.start_time || !data.end_time) {
@@ -196,22 +185,14 @@ export async function updateSchedule(id: number, data: Partial<ScheduleData>) {
             select: { speakerImage: true, image: true }
         });
 
-        // Handle speaker image upload
-        if (data.speaker_image_file && data.speaker_image_file instanceof File && data.speaker_image_file.size > 0) {
-            // Delete old speaker image if it exists and is being replaced
-            if (existingSchedule?.speakerImage) {
-                await deleteFile(existingSchedule.speakerImage);
-            }
-            data.speaker_image = await saveFile(data.speaker_image_file, 'speaker');
+        // Delete old speaker image if it is being replaced
+        if (data.speaker_image && existingSchedule?.speakerImage && data.speaker_image !== existingSchedule.speakerImage) {
+            await deleteFile(existingSchedule.speakerImage);
         }
 
-        // Handle featured image upload
-        if (data.featured_image_file && data.featured_image_file instanceof File && data.featured_image_file.size > 0) {
-            // Delete old featured image if it exists and is being replaced
-            if (existingSchedule?.image) {
-                await deleteFile(existingSchedule.image);
-            }
-            data.image = await saveFile(data.featured_image_file, 'schedule');
+        // Delete old featured image if it is being replaced
+        if (data.image && existingSchedule?.image && data.image !== existingSchedule.image) {
+            await deleteFile(existingSchedule.image);
         }
 
         await prisma.schedule.update({

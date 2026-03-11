@@ -10,18 +10,44 @@ import { ScheduleSidebar } from "./_components/ScheduleSidebar";
 import { createSchedule } from '@/app/actions/schedule';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
+import { upload } from '@vercel/blob/client';
 
 export default function CreateSchedulePage() {
     const router = useRouter();
 
     async function handleAction(formData: FormData) {
+        let speakerImageUrl: string | undefined = formData.get('speaker_image') as string || undefined;
+        let featuredImageUrl: string | undefined = formData.get('image') as string || undefined;
+
+        // Prevent setting 'blob:http://...' strings if file upload somehow fails or defaults preview
+        if (speakerImageUrl?.startsWith('blob:')) speakerImageUrl = undefined;
+        if (featuredImageUrl?.startsWith('blob:')) featuredImageUrl = undefined;
+
+        const speakerFile = formData.get('speaker_image_file') as File;
+        if (speakerFile && speakerFile.size > 0 && speakerFile.name !== 'undefined') {
+            const blob = await upload(speakerFile.name, speakerFile, {
+                access: 'public',
+                handleUploadUrl: '/api/upload',
+            });
+            speakerImageUrl = blob.url;
+        }
+
+        const featuredFile = formData.get('featured_image_file') as File;
+        if (featuredFile && featuredFile.size > 0 && featuredFile.name !== 'undefined') {
+             const blob = await upload(featuredFile.name, featuredFile, {
+                access: 'public',
+                handleUploadUrl: '/api/upload',
+            });
+            featuredImageUrl = blob.url;
+        }
+
         const res = await createSchedule({
             title: formData.get('title') as string,
             type: formData.get('type') as string,
             speaker_name: formData.get('speaker_name') as string,
             speaker_role: formData.get('speaker_role') as string || undefined,
-            speaker_image_file: formData.get('speaker_image_file') as File || undefined,
-            featured_image_file: formData.get('featured_image_file') as File || undefined,
+            speaker_image: speakerImageUrl,
+            image: featuredImageUrl,
             date: formData.get('date') as string,
             start_time: formData.get('start_time') as string,
             end_time: formData.get('end_time') as string,
