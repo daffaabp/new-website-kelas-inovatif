@@ -142,8 +142,6 @@ interface BlogData {
     read_time?: string;
     featured?: boolean;
     status?: BlogStatus;
-    image_file?: File;
-    content_image_file?: File;
 }
 
 export async function createBlog(data: BlogData) {
@@ -151,11 +149,6 @@ export async function createBlog(data: BlogData) {
         console.log('createBlog called with:', {
             title: data.title,
             slug: data.slug,
-            hasImageFile: !!data.image_file,
-            imageFileSize: data.image_file?.size,
-            imageFileType: data.image_file?.type,
-            hasContentImageFile: !!data.content_image_file,
-            contentImageFileSize: data.content_image_file?.size
         });
 
         // Validate required fields
@@ -177,30 +170,6 @@ export async function createBlog(data: BlogData) {
         if (existingBlog) {
             console.error('Validation error: slug already exists');
             return { msg: 'Slug already exists. Please use a unique slug.' };
-        }
-
-        // Handle thumbnail image upload
-        if (data.image_file && data.image_file.size > 0) {
-            console.log('Uploading thumbnail...');
-            try {
-                data.image = await saveFile(data.image_file, 'blog/thumbnail');
-                console.log('Thumbnail uploaded:', data.image);
-            } catch (uploadError) {
-                console.error('Thumbnail upload failed:', uploadError);
-                return { msg: `Failed to upload thumbnail: ${uploadError instanceof Error ? uploadError.message : 'Unknown error'}` };
-            }
-        }
-
-        // Handle content image upload
-        if (data.content_image_file && data.content_image_file.size > 0) {
-            console.log('Uploading content image...');
-            try {
-                data.contentImage = await saveFile(data.content_image_file, 'blog/content');
-                console.log('Content image uploaded:', data.contentImage);
-            } catch (uploadError) {
-                console.error('Content image upload failed:', uploadError);
-                return { msg: `Failed to upload content image: ${uploadError instanceof Error ? uploadError.message : 'Unknown error'}` };
-            }
         }
 
         console.log('Creating blog with data:', {
@@ -259,20 +228,14 @@ export async function updateBlog(id: number, data: Partial<BlogData>) {
             select: { image: true, contentImage: true }
         });
 
-        // Handle thumbnail image upload
-        if (data.image_file && data.image_file instanceof File && data.image_file.size > 0) {
-            if (existingBlog?.image) {
-                await deleteFile(existingBlog.image);
-            }
-            data.image = await saveFile(data.image_file, 'blog/thumbnail');
+        // Delete old thumbnail if it is being replaced
+        if (data.image && existingBlog?.image && data.image !== existingBlog.image) {
+            await deleteFile(existingBlog.image);
         }
 
-        // Handle content image upload
-        if (data.content_image_file && data.content_image_file instanceof File && data.content_image_file.size > 0) {
-            if (existingBlog?.contentImage) {
-                await deleteFile(existingBlog.contentImage);
-            }
-            data.contentImage = await saveFile(data.content_image_file, 'blog/content');
+        // Delete old content image if it is being replaced
+        if (data.contentImage && existingBlog?.contentImage && data.contentImage !== existingBlog.contentImage) {
+            await deleteFile(existingBlog.contentImage);
         }
 
         await prisma.blog.update({

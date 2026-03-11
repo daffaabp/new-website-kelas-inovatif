@@ -11,6 +11,7 @@ import { createBlog } from "@/app/actions/blog";
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { BlogStatus } from '@prisma/client';
+import { upload } from '@vercel/blob/client';
 
 export default function CreatePostPage() {
     const router = useRouter();
@@ -19,16 +20,38 @@ export default function CreatePostPage() {
         const readTimeVal = formData.get('read_time');
         const readTime = readTimeVal ? `${readTimeVal} min read` : '5 min read';
 
+        let thumbnailUrl: string | undefined = formData.get('image') as string || undefined;
+        let contentImageUrl: string | undefined = formData.get('contentImage') as string || undefined;
+
+        if (thumbnailUrl?.startsWith('blob:')) thumbnailUrl = undefined;
+        if (contentImageUrl?.startsWith('blob:')) contentImageUrl = undefined;
+
+        const thumbnailFile = formData.get('image_file') as File;
+        if (thumbnailFile && thumbnailFile.size > 0 && thumbnailFile.name !== 'undefined') {
+            const blob = await upload(thumbnailFile.name, thumbnailFile, {
+                access: 'public',
+                handleUploadUrl: '/api/upload',
+            });
+            thumbnailUrl = blob.url;
+        }
+
+        const contentFile = formData.get('content_image_file') as File;
+        if (contentFile && contentFile.size > 0 && contentFile.name !== 'undefined') {
+             const blob = await upload(contentFile.name, contentFile, {
+                access: 'public',
+                handleUploadUrl: '/api/upload',
+            });
+            contentImageUrl = blob.url;
+        }
+
         const res = await createBlog({
             title: formData.get('title') as string,
             slug: formData.get('slug') as string,
             excerpt: formData.get('excerpt') as string | undefined,
             content: formData.get('content') as string | undefined,
             category: formData.get('category') as string | undefined,
-            image: formData.get('image') as string | undefined,
-            contentImage: formData.get('contentImage') as string | undefined, // Keep usage of URL input if needed
-            image_file: formData.get('image_file') as File | undefined, // File upload for thumbnail
-            content_image_file: formData.get('content_image_file') as File | undefined, // File upload for content image
+            image: thumbnailUrl,
+            contentImage: contentImageUrl,
             read_time: readTime,
             featured: formData.get('featured') === 'on',
             status: formData.get('status') as BlogStatus | undefined,
