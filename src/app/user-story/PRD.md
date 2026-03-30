@@ -297,12 +297,12 @@ Lihat dokumen **USERSTORY.md** untuk detail lengkap copywriting, termasuk:
 
 | Aset | Status | Lokasi | Checklist |
 |------|--------|--------|-----------|
-| Foto Wayan Tangun | ✅ Ada | `/images/testimonials/Wayan Tangun.avif` | ✅ |
-| Foto Leopold Baginda | ✅ Ada | `/images/testimonials/LEOPOLD BAGINDA.avif` | ✅ |
-| Foto Akhmad Suhaidi | ✅ Ada | `/images/testimonials/AKHMAD SUHAIDI.avif` | ✅ |
-| Foto Arif Muljohadi | ✅ Ada | `/images/testimonials/Arif Mulyohadi.avif` | ✅ |
-| Foto Tri Nugraha Sakti | ⚠️ Perlu dicari | - | ⬜ |
-| Foto Rakhmadi Irfansyah | ⚠️ Perlu dicari | - | ⬜ |
+| Foto Wayan Tangun | ✅ Ada | `/images/testimonials/wayan-tangun.avif` | ✅ |
+| Foto Leopold Baginda | ✅ Ada | `/images/testimonials/leopold-baginda.avif` | ✅ |
+| Foto Akhmad Suhaidi | ✅ Ada | `/images/testimonials/akhmad-suhaidi.avif` | ✅ |
+| Foto Arif Muljohadi | ✅ Ada | `/images/testimonials/arif-mulyohadi.avif` | ✅ |
+| Foto Tri Nugraha Sakti | ✅ Ada | `/images/testimonials/dr-tri-nugraha-sakti-msi.avif` | ✅ |
+| Foto Rakhmadi Irfansyah | ✅ Ada | `/images/testimonials/rakhmadi-irfansyah-putra-s-kom-mmsi.avif` | ✅ |
 | Video YouTube Alumni | ✅ Ada | Lihat `VideoTestimonials.tsx` | ✅ |
 | Screenshot Turnitin | ⚠️ Perlu dikumpulkan | - | ⬜ |
 | Cover Buku Alumni | ⚠️ Perlu dikumpulkan | - | ⬜ |
@@ -328,7 +328,7 @@ Lihat dokumen **USERSTORY.md** untuk detail lengkap copywriting, termasuk:
 - [ ] Review dan approval dari stakeholder
 
 ### Phase 2: Pengumpulan Konten
-- [ ] Kumpulkan foto alumni yang belum ada (Tri Nugraha, Rakhmadi)
+- [x] Foto alumni (termasuk Tri Nugraha, Rakhmadi) di `public/images/testimonials/` — penamaan kebab-case
 - [ ] Kumpulkan screenshot bukti (Turnitin, Scopus)
 - [ ] Kumpulkan cover buku alumni
 - [ ] Lakukan wawancara dengan alumni (opsional, untuk narasi lebih lengkap)

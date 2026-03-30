@@ -98,20 +98,24 @@ export function StatsSection() {
             <div>
               <div className="flex -space-x-4 mb-4">
                 {[
-                  'ABDUL JAMIL.avif',
-                  'AKHMAD SUHAIDI.avif',
-                  'FADILAH NEYARASMI.avif',
-                  'GOMGOM T. PANGARIBUAN.avif',
-                  'KHAIRUDDIN KARIM.avif'
+                  'abdul-jamil.avif',
+                  'akhmad-suhaidi.avif',
+                  'fadilah-neyarasmi.avif',
+                  'gomgom-t-pangaribuan.avif',
+                  'khairuddin-karim.avif',
                 ].map((filename) => (
-                  <Image
+                  <div
                     key={filename}
-                    src={`/images/testimonials/${filename}`}
-                    alt="Student"
-                    className="rounded-full border-2 border-eduzin-dark object-cover"
-                    width={56}
-                    height={56}
-                  />
+                    className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-eduzin-dark"
+                  >
+                    <Image
+                      src={`/images/testimonials/${filename}`}
+                      alt="Student"
+                      fill
+                      sizes="56px"
+                      className="object-cover"
+                    />
+                  </div>
                 ))}
               </div>
               <div className="flex items-center gap-1">
@@ -137,9 +141,24 @@ export function StatsSection() {
             {/* Student Ratings Card - Now inline instead of absolute */}
             <div className="hidden lg:flex bg-white/10 backdrop-blur-md p-4 rounded-xl items-center gap-4 border border-white/10 w-fit">
               <div className="flex -space-x-2">
-                <Image src="/images/testimonials/GOMGOM T. PANGARIBUAN.avif" className="rounded-full border-2 border-transparent" alt="student" width={32} height={32} />
-                <Image src="/images/testimonials/AKHMAD SUHAIDI.avif" className="rounded-full border-2 border-transparent" alt="student" width={32} height={32} />
-                <Image src="/images/testimonials/FADILAH NEYARASMI.avif" className="rounded-full border-2 border-transparent" alt="student" width={32} height={32} />
+                {[
+                  'gomgom-t-pangaribuan.avif',
+                  'akhmad-suhaidi.avif',
+                  'fadilah-neyarasmi.avif',
+                ].map((filename) => (
+                  <div
+                    key={filename}
+                    className="relative h-8 w-8 shrink-0 overflow-hidden rounded-full border-2 border-transparent"
+                  >
+                    <Image
+                      src={`/images/testimonials/${filename}`}
+                      alt="student"
+                      fill
+                      sizes="32px"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
               </div>
               <div>
                 <p className="font-bold text-sm text-white">4.9/5</p>
@@ -149,7 +168,7 @@ export function StatsSection() {
           </div>
 
           {/* Right Column: Testimonial Slider */}
-          <div className="lg:pl-8 relative flex flex-col h-auto lg:h-[690px] pb-0 lg:pb-20">
+          <div className="lg:pl-8 relative flex flex-col pb-8 lg:pb-12">
             {/* Header Badge */}
             <div className="mb-8">
               <span className="inline-block px-3 py-1 border border-white/20 rounded-full text-xs font-bold uppercase tracking-wider text-white/90">
@@ -158,7 +177,7 @@ export function StatsSection() {
             </div>
 
             {/* Testimonial Content */}
-            <div className="flex-1 min-h-0 pr-2">
+            <div className="flex-1 pr-2">
               <Quote className="text-white/20 w-10 h-10 mb-6" />
 
               <div key={current.id} className="animate-fadeIn">
@@ -167,13 +186,15 @@ export function StatsSection() {
                 </h2>
 
                 <div className="flex items-center gap-4">
-                  <Image
-                    src={current.avatar}
-                    alt={current.author}
-                    className="rounded-full border-2 border-white/20 object-cover"
-                    width={56}
-                    height={56}
-                  />
+                  <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-white/20">
+                    <Image
+                      src={current.avatar}
+                      alt={current.author}
+                      fill
+                      sizes="56px"
+                      className="object-cover"
+                    />
+                  </div>
                   <div>
                     <p className="font-bold text-lg">{current.author}</p>
                     <p className="text-xs font-bold text-white/50 uppercase tracking-widest">{current.role}</p>
@@ -183,7 +204,7 @@ export function StatsSection() {
             </div>
 
             {/* Navigation Arrows */}
-            <div className="mt-8 lg:absolute lg:bottom-32 lg:left-0 lg:mt-0 flex gap-4">
+            <div className="mt-8 flex gap-4">
               <button
                 onClick={prevTestimonial}
                 className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-eduzin-dark transition-all duration-300 group cursor-pointer"

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Calendar, Tag, Image as ImageIcon, Plus, X, UploadCloud, Eye } from "lucide-react";
+import { Calendar, Tag, Image as ImageIcon, Plus, X, UploadCloud } from "lucide-react";
 import Image from "next/image";
 import { getEventTypes, createEventType, deleteEventType } from '@/app/actions/eventType';
 import { toast } from 'sonner';
@@ -42,15 +42,21 @@ export function ScheduleSidebar({ initialData }: ScheduleSidebarProps) {
 
     const [eventTypes, setEventTypes] = useState<EventType[]>([]);
 
-    // Fetch event types on mount
-    useEffect(() => {
-        fetchEventTypes();
-    }, []);
-
     const fetchEventTypes = async () => {
         const types = await getEventTypes();
         setEventTypes(types);
     };
+
+    useEffect(() => {
+        let cancelled = false;
+        void (async () => {
+            const types = await getEventTypes();
+            if (!cancelled) setEventTypes(types);
+        })();
+        return () => {
+            cancelled = true;
+        };
+    }, []);
 
     const handleAddEventType = async () => {
         const name = prompt("Enter new event type category name:");

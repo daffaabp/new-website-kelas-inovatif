@@ -11,13 +11,15 @@ export function Testimonial() {
                     &quot;Saya awam dengan AI, namun di Kelas Inovatif saya justru &apos;tersesat di jalan yang benar&apos;. Di sini, pembelajaran diberikan perlahan dan bertahap. Hasilnya, saya bisa menyelesaikan studi magister saya, dan tahun depan berencana melanjutkan ke jenjang doktoral S3&quot;
                 </h3>
                 <div className="flex items-center justify-center space-x-4">
-                    <Image
-                        alt="Student Portrait"
-                        className="rounded-full object-cover"
-                        src="/images/testimonials/Wayan Tangun.avif"
-                        width={48}
-                        height={48}
-                    />
+                    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
+                        <Image
+                            alt="Student Portrait"
+                            className="object-cover"
+                            src="/images/testimonials/wayan-tangun.avif"
+                            fill
+                            sizes="48px"
+                        />
+                    </div>
                     <div className="text-left">
                         <p className="font-bold text-gray-900 dark:text-white text-sm">Wayan Tangun Setiarien, M.M.</p>
                         <p className="text-xs text-gray-500 dark:text-gray-400">Alumni Kelas Inovatif & Magister Manajemen</p>

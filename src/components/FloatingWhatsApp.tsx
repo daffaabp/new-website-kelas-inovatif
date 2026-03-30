@@ -7,11 +7,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { waMeUrl } from "@/lib/admin-contact";
 
 export function FloatingWhatsApp() {
-  const phoneNumber = "6285712208535";
-  const message = encodeURIComponent("Halo Admin Kelas Inovatif, saya butuh informasi mengenai kelas penulisan karya ilmiah.");
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+  const whatsappUrl = waMeUrl(
+    "Halo Admin Kelas Inovatif, saya butuh informasi mengenai kelas penulisan karya ilmiah."
+  );
 
   return (
     <div className="fixed bottom-6 right-6 z-50">

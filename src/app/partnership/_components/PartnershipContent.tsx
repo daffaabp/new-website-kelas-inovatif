@@ -3,7 +3,6 @@
 import { Navbar } from "@/components/commons/Navbar";
 import { Footer } from "@/components/commons/Footer";
 import { PartnershipHero } from "./PartnershipHero";
-import { ImpactGallery } from "./ImpactGallery";
 import { PartnershipCTA } from "./PartnershipCTA";
 import { PartnershipFeatureSection } from "./PartnershipFeatureSection";
 import { PartnershipSinergySection } from "./PartnershipSinergySection";

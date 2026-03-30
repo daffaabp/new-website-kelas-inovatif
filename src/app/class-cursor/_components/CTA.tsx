@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ADMIN_WHATSAPP_DIGITS } from '@/lib/admin-contact';
 
 export function CTA() {
     return (
@@ -40,7 +41,7 @@ export function CTA() {
                     </Link>
                     <a
                         className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition text-lg"
-                        href="https://wa.me/6285712208535?text=Halo%20Admin%20Kelas%20Inovatif%2C%20saya%20ingin%20bertanya%20tentang%20Kelas%20Intensif%20Penulisan%20Karya%20Ilmiah%20menggunakan%20Cursor%20AI.%20Mohon%20info%20jadwal%20dan%20cara%20pendaftaran%20terbarunya.%20Terima%20kasih."
+                        href={`https://wa.me/${ADMIN_WHATSAPP_DIGITS}?text=Halo%20Admin%20Kelas%20Inovatif%2C%20saya%20ingin%20bertanya%20tentang%20Kelas%20Intensif%20Penulisan%20Karya%20Ilmiah%20menggunakan%20Cursor%20AI.%20Mohon%20info%20jadwal%20dan%20cara%20pendaftaran%20terbarunya.%20Terima%20kasih.`}
                         target="_blank"
                         rel="noopener noreferrer"
                     >

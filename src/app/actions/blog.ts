@@ -126,7 +126,7 @@ export async function getBlogBySlug(slug: string) {
     }
 }
 
-import { saveFile, deleteFile } from '@/lib/storage';
+import { deleteFile } from '@/lib/storage';
 
 
 interface BlogData {

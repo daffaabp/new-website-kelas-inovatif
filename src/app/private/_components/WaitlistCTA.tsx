@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { ADMIN_WHATSAPP_DIGITS } from '@/lib/admin-contact';
 
 export function WaitlistCTA() {
     return (
@@ -11,7 +11,7 @@ export function WaitlistCTA() {
                 </p>
                 <div className="flex justify-center">
                     <a 
-                        href="https://wa.me/6285712208535?text=Halo%20Admin,%20saya%20masih%20ragu%20mau%20ambil%20paket%20Private%20yang%20mana,%20boleh%20konsultasi?" 
+                        href={`https://wa.me/${ADMIN_WHATSAPP_DIGITS}?text=Halo%20Admin,%20saya%20masih%20ragu%20mau%20ambil%20paket%20Private%20yang%20mana,%20boleh%20konsultasi?`}
                         target="_blank"
                         className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-4 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                     >

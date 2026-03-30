@@ -1,21 +1,27 @@
 import React from 'react';
-import { PersonaType } from '../_data/stories';
+import { AlumniStory, PersonaType } from '../_data/stories';
 
 interface PersonaFilterProps {
+    stories: AlumniStory[];
     activeFilter: PersonaType | 'all';
     onFilterChange: (filter: PersonaType | 'all') => void;
 }
 
-export function PersonaFilter({ activeFilter, onFilterChange }: PersonaFilterProps) {
-    const filters: { value: PersonaType | 'all'; label: string }[] = [
-        { value: 'all', label: 'Semua Cerita' },
-        { value: 'awam-teknologi', label: 'Awam Teknologi' },
-        { value: 'stuck-lama', label: 'Sudah Lama Stuck' },
-        { value: 'takut-plagiasi', label: 'Takut Plagiasi' },
-        { value: 'mahasiswa-biasa', label: 'Mahasiswa Biasa' },
-        { value: 'produktif-menulis', label: 'Ingin Produktif' },
-        { value: 'dosen-muda', label: 'Dosen Muda' },
-    ];
+const ALL_FILTERS: { value: PersonaType | 'all'; label: string }[] = [
+    { value: 'all', label: 'Semua Cerita' },
+    { value: 'awam-teknologi', label: 'Awam Teknologi' },
+    { value: 'stuck-lama', label: 'Sudah Lama Stuck' },
+    { value: 'takut-plagiasi', label: 'Takut Plagiasi' },
+    { value: 'mahasiswa-biasa', label: 'Mahasiswa Biasa' },
+    { value: 'produktif-menulis', label: 'Ingin Produktif' },
+    { value: 'dosen-muda', label: 'Dosen Muda' },
+];
+
+export function PersonaFilter({ stories, activeFilter, onFilterChange }: PersonaFilterProps) {
+    const personasPresent = new Set(stories.map((s) => s.persona));
+    const filters = ALL_FILTERS.filter(
+        (f) => f.value === 'all' || personasPresent.has(f.value)
+    );
 
     return (
         <div className="flex flex-wrap justify-center gap-3 mb-12">

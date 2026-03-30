@@ -20,6 +20,7 @@ export function UserStoryContent() {
 
             <div className="container mx-auto px-6 mb-16 relative z-30">
                 <PersonaFilter
+                    stories={stories}
                     activeFilter={activeFilter}
                     onFilterChange={setActiveFilter}
                 />

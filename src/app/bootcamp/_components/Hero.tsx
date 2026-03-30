@@ -2,6 +2,7 @@
 
 import { ArrowRight, MessageCircle } from "lucide-react";
 import Link from "next/link";
+import { ADMIN_WHATSAPP_DIGITS } from "@/lib/admin-contact";
 
 export default function Hero() {
   return (
@@ -38,7 +39,7 @@ export default function Hero() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto animate-fadeIn fill-mode-[both] [animation-delay:400ms]">
             <Link
-              href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20tertarik%20dengan%20Bootcamp%20Masterclass%20Penulisan%20Akademik" 
+              href={`https://wa.me/${ADMIN_WHATSAPP_DIGITS}?text=Halo%20Admin,%20saya%20tertarik%20dengan%20Bootcamp%20Masterclass%20Penulisan%20Akademik`}
               className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white transition-all duration-200 bg-[#1A3C34] border border-transparent rounded-full hover:bg-bootcamp-primary-light hover:scale-105 shadow-lg shadow-[#1A3C34]/20 group"
             >
               <MessageCircle className="w-5 h-5 mr-2" />

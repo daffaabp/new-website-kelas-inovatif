@@ -136,7 +136,7 @@ Berikut adalah pemetaan alumni yang akan dijadikan subjek cerita:
 | **Kutipan Existing** | "Saya awam dengan AI, namun di Kelas Inovatif saya justru 'tersesat di jalan yang benar'. Pembelajaran diberikan perlahan dan bertahap." |
 | **Before** | Tidak paham AI sama sekali, takut ketinggalan jaman. |
 | **After** | Lulus Magister, rencana lanjut S3. |
-| **Foto** | `/images/testimonials/Wayan Tangun.avif` |
+| **Foto** | `/images/testimonials/wayan-tangun.avif` |
 
 ---
 
@@ -148,7 +148,7 @@ Berikut adalah pemetaan alumni yang akan dijadikan subjek cerita:
 | **Kutipan Existing** | "Puji Tuhan, disertasi saya berhasil selesai. Turnitin 11%. Artikel kami tembus Scopus Q1." |
 | **Before** | Disertasi mandek bertahun-tahun, hampir menyerah. |
 | **After** | Lulus Doktor + Publikasi Scopus Q1, Turnitin 11%. |
-| **Foto** | `/images/testimonials/LEOPOLD BAGINDA.avif` |
+| **Foto** | `/images/testimonials/leopold-baginda.avif` |
 | **Video** | Ada (YouTube) |
 
 ---
@@ -173,7 +173,7 @@ Berikut adalah pemetaan alumni yang akan dijadikan subjek cerita:
 | **Kutipan Existing** | "Dengan bimbingan step by step yang sangat detail, saya berhasil menyusun proposal tesis dengan revisi yang sangat sedikit. Turnitin rata-rata di bawah 10%." |
 | **Before** | Mahasiswa biasa yang bingung mulai dari mana. |
 | **After** | Proposal tesis diterima dengan revisi minimal, Turnitin <10%. |
-| **Foto** | `/images/testimonials/AKHMAD SUHAIDI.avif` |
+| **Foto** | `/images/testimonials/akhmad-suhaidi.avif` |
 | **Video** | Ada (YouTube) |
 
 ---
@@ -186,7 +186,7 @@ Berikut adalah pemetaan alumni yang akan dijadikan subjek cerita:
 | **Kutipan Existing** | "Setelah menerapkan trik penulisan buku dari kelas intensif Cursor, 6 buku saya terbit ber-ISBN. Target saya, setiap bulan menerbitkan satu buku baru." |
 | **Before** | Ingin menulis buku tapi tidak produktif. |
 | **After** | 6 buku terbit ber-ISBN, target 1 buku per bulan. |
-| **Foto** | `/images/testimonials/Arif Mulyohadi.avif` |
+| **Foto** | `/images/testimonials/arif-mulyohadi.avif` |
 | **Video** | Ada (YouTube) |
 
 ---

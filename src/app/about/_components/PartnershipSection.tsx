@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { GraduationCap, BookOpen, Users, ArrowRight } from "lucide-react";
+import { GraduationCap, BookOpen, Users } from "lucide-react";
 
 export function PartnershipSection() {
     return (

@@ -11,6 +11,8 @@ interface VideoTestimonial {
     name: string;
     role: string;
     title?: string;
+    /** Path ke foto di `public/images/testimonials/` (opsional; jika kosong pakai ikon placeholder) */
+    avatar?: string;
 }
 
 interface VideoTestimonialsProps {
@@ -28,7 +30,8 @@ export function VideoTestimonials({ videos }: VideoTestimonialsProps) {
             thumbnail: '',
             name: 'Dr. Leopold Baginda, S.Pd., M.Th.',
             role: 'Dosen Sekolah Tinggi Teologi Injili Indonesia Palu',
-            title: 'Disertasi Selesai dengan Skor Turnitin 11%'
+            title: 'Disertasi Selesai dengan Skor Turnitin 11%',
+            avatar: '/images/testimonials/leopold-baginda.avif',
         },
         {
             id: '2',
@@ -36,7 +39,8 @@ export function VideoTestimonials({ videos }: VideoTestimonialsProps) {
             thumbnail: '',
             name: 'Akhmad Suhaidi, S.H',
             role: 'Mahasiswa Magister Hukum',
-            title: 'Sukses Proposal Tesis'
+            title: 'Sukses Proposal Tesis',
+            avatar: '/images/testimonials/akhmad-suhaidi.avif',
         },
         {
             id: '3',
@@ -44,7 +48,8 @@ export function VideoTestimonials({ videos }: VideoTestimonialsProps) {
             thumbnail: '',
             name: 'Rakhmadi Irfansyah Putra, S.Kom., MMSI',
             role: 'Dosen ITPLN',
-            title: 'Sukses Proposal Disertasi Turnitin 5%'
+            title: 'Sukses Proposal Disertasi Turnitin 5%',
+            avatar: '/images/testimonials/rakhmadi-irfansyah-putra-s-kom-mmsi.avif',
         },
         {
             id: '4',
@@ -52,7 +57,8 @@ export function VideoTestimonials({ videos }: VideoTestimonialsProps) {
             thumbnail: '',
             name: 'Dr. R. Arif Muljohadi, S.H., M.Hum.',
             role: 'Dosen Universitas Bangkalan',
-            title: 'Buku Ajar Ke-6 Berhasil Terbit ISBN'
+            title: 'Buku Ajar Ke-6 Berhasil Terbit ISBN',
+            avatar: '/images/testimonials/arif.webp',
         },
         {
             id: '5',
@@ -60,7 +66,8 @@ export function VideoTestimonials({ videos }: VideoTestimonialsProps) {
             thumbnail: '',
             name: 'Dr. Tri Nugraha Sakti. MSI',
             role: 'Lecturer LSPR Institute',
-            title: 'Cursor Lolos Turnitin AI Detection untuk Scopus'
+            title: 'Cursor Lolos Turnitin AI Detection untuk Scopus',
+            avatar: '/images/testimonials/dr-tri-nugraha-sakti-msi.avif',
         },
         {
             id: '6',
@@ -68,8 +75,9 @@ export function VideoTestimonials({ videos }: VideoTestimonialsProps) {
             thumbnail: '',
             name: 'Wayan Tangun Setiarien, M.M.',
             role: 'Magister Managemen Unisula',
-            title: 'Bergabung di Kelas Inovatif, Tersesat Dijalan Yang Benar'
-        }
+            title: 'Bergabung di Kelas Inovatif, Tersesat Dijalan Yang Benar',
+            avatar: '/images/testimonials/wayan-tangun.avif',
+        },
     ];
 
     const videoList = videos || defaultVideos;
@@ -196,9 +204,21 @@ export function VideoTestimonials({ videos }: VideoTestimonialsProps) {
                                     </h3>
                                 )}
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-linear-to-br from-teal-100 to-teal-200 dark:from-teal-800 dark:to-teal-900 flex items-center justify-center ring-2 ring-teal-300 dark:ring-teal-700 shrink-0">
-                                        <User className="w-5 h-5 text-teal-700 dark:text-teal-300" />
-                                    </div>
+                                    {video.avatar ? (
+                                        <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-2 ring-teal-300 dark:ring-teal-700">
+                                            <Image
+                                                src={video.avatar}
+                                                alt={video.name}
+                                                fill
+                                                sizes="40px"
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                    ) : (
+                                        <div className="w-10 h-10 rounded-full bg-linear-to-br from-teal-100 to-teal-200 dark:from-teal-800 dark:to-teal-900 flex items-center justify-center ring-2 ring-teal-300 dark:ring-teal-700 shrink-0">
+                                            <User className="w-5 h-5 text-teal-700 dark:text-teal-300" />
+                                        </div>
+                                    )}
                                     <div className="flex-1 min-w-0">
                                         <h4 className="font-semibold text-gray-900 dark:text-white text-sm truncate">
                                             {video.name}
