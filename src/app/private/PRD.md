@@ -74,7 +74,7 @@ Fasilitas sama, harga berbeda berdasarkan jumlah peserta per sesi:
     *   Bonus Prompt.
 *   **Curriculum / Scope:** Penjelasan bahwa materi mencakup Skripsi, Tesis, Disertasi, Buku, dll.
 *   **Package Cards:** Menampilkan 3 pilihan paket (Eksklusif, Premium, Ekonomis) berjejer.
-    *   *Note:* Tombol CTA akan mengarah ke WhatsApp Admin (`0857-1220-8535`) untuk konsultasi biaya dan penjadwalan.
+    *   *Note:* Tombol CTA akan mengarah ke WhatsApp Admin (`0954-0212-2395`) untuk konsultasi biaya dan penjadwalan.
 *   **Flow Pendaftaran:**
     1.  Lihat Paket.
     2.  Hubungi Admin via WA.

@@ -173,7 +173,7 @@ Platform Pembelajaran AI No.1 di Indonesia
 Untuk informasi lebih lanjut dan pendaftaran, silakan hubungi:
 
 **Admin Kelas Inovatif**  
-📱 WhatsApp: **0857-1220-8535**
+📱 WhatsApp: **0954-0212-2395**
 
 ---
 
