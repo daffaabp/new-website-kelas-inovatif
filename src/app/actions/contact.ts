@@ -12,7 +12,16 @@ const contactSchema = z.object({
     privacy: z.literal("on").or(z.boolean().refine(v => v === true, "You must agree to the privacy policy")),
 });
 
-export async function sendContactMessage(prevState: any, formData: FormData) {
+export type ContactFormState = {
+    success: boolean;
+    message: string;
+    errors?: Record<string, string[] | undefined>;
+};
+
+export async function sendContactMessage(
+    _prevState: ContactFormState | undefined,
+    formData: FormData
+): Promise<ContactFormState> {
     const rawData = {
         fullName: formData.get('fullName'),
         email: formData.get('email'),

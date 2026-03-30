@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { ADMIN_PHONE_DISPLAY_DASHED } from '@/lib/admin-contact';
 
 const faqCategories = [
     {
@@ -71,7 +72,7 @@ const faqCategories = [
             },
             {
                 question: 'Bagaimana cara mendaftar kelas?',
-                answer: 'Sangat mudah! Hubungi admin kami via WhatsApp di 0857-1220-8535 atau melalui form pendaftaran di website. Admin akan membantu Anda memilih kelas yang tepat sesuai kebutuhan, memberikan informasi jadwal terbaru, dan memandu proses pendaftaran. Kami juga menawarkan konsultasi gratis.',
+                answer: `Sangat mudah! Hubungi admin kami via WhatsApp di ${ADMIN_PHONE_DISPLAY_DASHED} atau melalui form pendaftaran di website. Admin akan membantu Anda memilih kelas yang tepat sesuai kebutuhan, memberikan informasi jadwal terbaru, dan memandu proses pendaftaran. Kami juga menawarkan konsultasi gratis.`,
             },
             {
                 question: 'Apakah ada diskon atau paket khusus?',

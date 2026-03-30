@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import { ADMIN_WHATSAPP_DIGITS } from '@/lib/admin-contact';
 
 export function CTA() {
     return (
@@ -14,7 +15,7 @@ export function CTA() {
                     </Link>
                     <a
                         className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition text-lg"
-                        href="https://wa.me/6285712208535?text=Hallo%2C%20saya%20butuh%20informasi%20webinar%20penulisan%20akademik%20di%20Kelas%20Inovatif"
+                        href={`https://wa.me/${ADMIN_WHATSAPP_DIGITS}?text=Hallo%2C%20saya%20butuh%20informasi%20webinar%20penulisan%20akademik%20di%20Kelas%20Inovatif`}
                         target="_blank"
                         rel="noopener noreferrer"
                     >

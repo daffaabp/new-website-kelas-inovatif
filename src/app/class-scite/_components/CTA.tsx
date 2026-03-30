@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ADMIN_WHATSAPP_DIGITS } from '@/lib/admin-contact';
 
 export function CTA() {
     return (
@@ -22,7 +23,7 @@ export function CTA() {
                     <Link className="inline-flex items-center justify-center px-8 py-4 bg-white text-eduzin-dark font-bold rounded-full hover:bg-gray-100 transition shadow-lg text-lg" href="/schedule">
                         Daftar Sekarang
                     </Link>
-                    <a className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition text-lg" href="https://wa.me/6285712208535?text=Halo%20Admin%20Kelas%20Inovatif%2C%20saya%20tertarik%20untuk%20mengikuti%20Kelas%20Menguasai%20SciSpace.%20Kapan%20jadwal%20terdekat%20dan%20bagaimana%20cara%20pendaftarannya%3F%20Terima%20kasih." target="_blank" rel="noopener noreferrer">
+                    <a className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition text-lg" href={`https://wa.me/${ADMIN_WHATSAPP_DIGITS}?text=Halo%20Admin%20Kelas%20Inovatif%2C%20saya%20tertarik%20untuk%20mengikuti%20Kelas%20Menguasai%20SciSpace.%20Kapan%20jadwal%20terdekat%20dan%20bagaimana%20cara%20pendaftarannya%3F%20Terima%20kasih.`} target="_blank" rel="noopener noreferrer">
                         Hubungi Kami
                     </a>
                 </div>

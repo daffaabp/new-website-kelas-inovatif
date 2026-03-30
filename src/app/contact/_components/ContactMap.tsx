@@ -1,5 +1,6 @@
 import React from "react";
 import { MapPin, ExternalLink, Building2 } from "lucide-react";
+import { ADMIN_PHONE_DISPLAY_COMPACT } from "@/lib/admin-contact";
 
 const MAP_QUERY = "Jl+Raya+Mujur+No+46+Kroya+Cilacap+Jawa+Tengah+Indonesia";
 const MAP_EMBED_SRC = `https://www.google.com/maps?q=${MAP_QUERY}&output=embed`;
@@ -70,7 +71,7 @@ export const ContactMap = () => {
                         {
                             title: "Hubungi Kami",
                             desc: "Telepon & email untuk pertanyaan dan pendaftaran.",
-                            loc: "085712208535 · aiindonesiakreatif@gmail.com",
+                            loc: `${ADMIN_PHONE_DISPLAY_COMPACT} · aiindonesiakreatif@gmail.com`,
                         },
                     ].map((place) => (
                         <div

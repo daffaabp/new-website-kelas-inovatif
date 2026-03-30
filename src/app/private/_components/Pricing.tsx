@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { Check } from 'lucide-react';
+import { ADMIN_WHATSAPP_DIGITS } from '@/lib/admin-contact';
 
 export function Pricing() {
     return (
@@ -49,7 +49,7 @@ export function Pricing() {
                             </li>
                         </ul>
                         <a
-                            href="https://wa.me/6285712208535?text=Halo%20Admin,%20saya%20tertarik%20daftar%20Private%20Master%20Class%20Paket%20Eksklusif%20(1%20Orang)."
+                            href={`https://wa.me/${ADMIN_WHATSAPP_DIGITS}?text=Halo%20Admin,%20saya%20tertarik%20daftar%20Private%20Master%20Class%20Paket%20Eksklusif%20(1%20Orang).`}
                             target='_blank'
                             className="block w-full text-center bg-private-primary hover:bg-private-primary/90 text-white font-bold py-4 rounded-xl transition-colors"
                         >
@@ -86,7 +86,7 @@ export function Pricing() {
                             </li>
                         </ul>
                         <a
-                            href="https://wa.me/6285712208535?text=Halo%20Admin,%20saya%20tertarik%20daftar%20Private%20Master%20Class%20Paket%20Premium%20(2%20Orang)."
+                            href={`https://wa.me/${ADMIN_WHATSAPP_DIGITS}?text=Halo%20Admin,%20saya%20tertarik%20daftar%20Private%20Master%20Class%20Paket%20Premium%20(2%20Orang).`}
                             target='_blank'
                             className="block w-full text-center bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-bold py-4 rounded-xl transition-colors"
                         >
@@ -123,7 +123,7 @@ export function Pricing() {
                             </li>
                         </ul>
                         <a
-                            href="https://wa.me/6285712208535?text=Halo%20Admin,%20saya%20tertarik%20daftar%20Private%20Master%20Class%20Paket%20Ekonomis%20(3%20Orang)."
+                            href={`https://wa.me/${ADMIN_WHATSAPP_DIGITS}?text=Halo%20Admin,%20saya%20tertarik%20daftar%20Private%20Master%20Class%20Paket%20Ekonomis%20(3%20Orang).`}
                             target='_blank'
                             className="block w-full text-center bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-bold py-4 rounded-xl transition-colors"
                         >

@@ -1,11 +1,11 @@
 import React from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
+import { waMeUrl } from "@/lib/admin-contact";
 
 export function JobsCTA() {
-    const whatsappMessage = encodeURIComponent(
+    const whatsappUrl = waMeUrl(
         "Halo, saya tertarik bergabung dengan tim Kelas Inovatif. Saya ingin mengirim aplikasi umum / bertanya tentang lowongan karier. Terima kasih."
     );
-    const whatsappUrl = `https://wa.me/6285712208535?text=${whatsappMessage}`;
 
     return (
         <section className="py-24 bg-eduzin-dark text-white text-center relative overflow-hidden">

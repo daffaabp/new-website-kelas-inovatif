@@ -5,6 +5,7 @@ import { useActionState, useEffect, useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { MapPin, Phone, Mail, Send, Loader2, CheckCircle2 } from "lucide-react";
 import { sendContactMessage } from "@/app/actions/contact";
+import { ADMIN_PHONE_DISPLAY_COMPACT, waMeBase } from "@/lib/admin-contact";
 import { toast } from "sonner"; // Assuming sonner is used for toasts based on package.json
 
 const SubmitButton = () => {
@@ -73,12 +74,12 @@ export const ContactFormSection = () => {
                                             Telepon
                                         </p>
                                         <a
-                                            href="https://wa.me/6285712208535"
+                                            href={waMeBase()}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="font-medium hover:text-white/90 transition"
                                         >
-                                            085712208535 (WA)
+                                            {ADMIN_PHONE_DISPLAY_COMPACT} (WA)
                                         </a>
                                         <p className="text-sm text-gray-400 mt-1">
                                             Senin - Sabtu 08:00 - 17:00 WIB

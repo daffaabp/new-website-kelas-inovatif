@@ -1,6 +1,6 @@
-
 import React from 'react';
 import Image from 'next/image';
+import { ADMIN_WHATSAPP_DIGITS } from '@/lib/admin-contact';
 
 export function Hero() {
     return (
@@ -27,7 +27,7 @@ export function Hero() {
                     <a className="inline-flex items-center justify-center px-8 py-4 bg-private-primary hover:bg-private-primary/90 text-white text-lg font-bold rounded-full transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1" href="#pricing">
                         Lihat Paket Kelas
                     </a>
-                    <a className="inline-flex items-center justify-center px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:border-private-primary dark:hover:border-private-primary text-gray-700 dark:text-white text-lg font-bold rounded-full transition-all" href="https://wa.me/6285712208535?text=Halo%20Admin,%20saya%20ingin%20bertanya%20tentang%20Private%20Master%20Class." target='_blank'>
+                    <a className="inline-flex items-center justify-center px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:border-private-primary dark:hover:border-private-primary text-gray-700 dark:text-white text-lg font-bold rounded-full transition-all" href={`https://wa.me/${ADMIN_WHATSAPP_DIGITS}?text=Halo%20Admin,%20saya%20ingin%20bertanya%20tentang%20Private%20Master%20Class.`} target='_blank'>
                         Konsultasi Gratis
                     </a>
                 </div>

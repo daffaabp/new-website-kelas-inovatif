@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Facebook, MapPin, Phone, Mail } from 'lucide-react';
+import { ADMIN_PHONE_DISPLAY_COMPACT } from '@/lib/admin-contact';
 
 export function Footer() {
     return (
@@ -76,7 +77,7 @@ export function Footer() {
                             </li>
                             <li className="flex items-center gap-3">
                                 <Phone className="text-about-primary w-5 h-5 shrink-0" />
-                                <span>085712208535</span>
+                                <span>{ADMIN_PHONE_DISPLAY_COMPACT}</span>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Mail className="text-about-primary w-5 h-5 shrink-0" />

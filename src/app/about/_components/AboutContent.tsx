@@ -5,8 +5,6 @@ import { Footer } from "@/components/commons/Footer";
 import { AboutHero } from "./AboutHero";
 import { MissionSection } from "./MissionSection";
 import { ValuesSection } from "./ValuesSection";
-import { PartnershipSection } from "./PartnershipSection";
-import { ProofOfCollaborationSection } from "./ProofOfCollaborationSection";
 
 export function AboutContent() {
     return (

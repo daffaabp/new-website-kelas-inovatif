@@ -15,13 +15,15 @@ export function StoryCard({ story, onReadMore }: StoryCardProps) {
             {/* Header: Profile */}
             <div className="flex justify-between items-start mb-6">
                 <div className="flex items-center gap-4">
-                    <Image
-                        alt={story.name}
-                        src={story.photo}
-                        className="rounded-full object-cover border-2 border-[#D4AF37] shadow-sm transform group-hover:scale-110 transition-transform duration-500"
-                        width={64}
-                        height={64}
-                    />
+                    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-[#D4AF37] shadow-sm transform group-hover:scale-110 transition-transform duration-500">
+                        <Image
+                            alt={story.name}
+                            src={story.photo}
+                            className="object-cover"
+                            fill
+                            sizes="64px"
+                        />
+                    </div>
                     <div>
                         <h4 className="font-bold text-lg text-[#1C302B] dark:text-white leading-tight">{story.name}</h4>
                         <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide mt-1">{story.title}</p>
@@ -41,7 +43,10 @@ export function StoryCard({ story, onReadMore }: StoryCardProps) {
             {/* Quote Utama */}
             <div className="relative mb-6 grow">
                 <Quote className="absolute -top-2 -left-2 w-6 h-6 text-[#D4AF37]/20 transform -scale-x-100" />
-                <p className="font-serif text-xl text-[#1C302B] dark:text-white leading-relaxed pl-6 italic">
+                <p
+                    className="font-serif text-xl text-[#1C302B] dark:text-white leading-relaxed pl-6 italic line-clamp-5"
+                    title={story.quote}
+                >
                     &quot;{story.quote}&quot;
                 </p>
             </div>

@@ -1,5 +1,7 @@
 "use client";
 
+import { waMeBase } from '@/lib/admin-contact';
+
 export function PartnershipCTA() {
     return (
         <section className="bg-community-primary text-partnership-bg-cream py-20 px-6 md:px-12 relative overflow-hidden">
@@ -10,7 +12,7 @@ export function PartnershipCTA() {
                     <div className="flex flex-col gap-4 font-sans">
                         <a className="text-2xl font-bold border-b border-partnership-accent/50 w-fit hover:text-partnership-accent transition-colors pb-1" href="mailto:aiindonesiakreatif@gmail.com">aiindonesiakreatif@gmail.com</a>
                         <div className="flex gap-6 mt-4">
-                            <a className="hover:text-partnership-accent transition-colors" href="https://wa.me/6285712208535">WhatsApp</a>
+                            <a className="hover:text-partnership-accent transition-colors" href={waMeBase()}>WhatsApp</a>
                             <a className="hover:text-partnership-accent transition-colors" href="https://instagram.com/kelasinovatif">Instagram</a>
                             <a className="hover:text-partnership-accent transition-colors" href="https://youtube.com/@kelasinovatif">YouTube</a>
                         </div>

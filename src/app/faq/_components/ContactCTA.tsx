@@ -1,11 +1,11 @@
 import React from 'react';
 import { MessageCircle, Phone } from 'lucide-react';
+import { ADMIN_PHONE_DISPLAY_DASHED, waMeUrl } from '@/lib/admin-contact';
 
 export function ContactCTA() {
-    const whatsappMessage = encodeURIComponent(
-        "Halo Admin, saya tertarik dengan program pembelajaran AI untuk akademik di Kelas Inovatif. Mohon informasi mengenai jadwal kelas terdekat dan bagaimana cara mendaftarnya. Terima kasih."
+    const whatsappUrl = waMeUrl(
+        'Halo Admin, saya tertarik dengan program pembelajaran AI untuk akademik di Kelas Inovatif. Mohon informasi mengenai jadwal kelas terdekat dan bagaimana cara mendaftarnya. Terima kasih.'
     );
-    const whatsappUrl = `https://wa.me/6285712208535?text=${whatsappMessage}`;
 
     return (
         <section className="py-16 bg-faq-accent dark:bg-faq-surface-dark">
@@ -28,7 +28,7 @@ export function ContactCTA() {
                     </a>
                     <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                         <Phone className="w-4 h-4" />
-                        <span>0857-1220-8535</span>
+                        <span>{ADMIN_PHONE_DISPLAY_DASHED}</span>
                     </div>
                 </div>
                 <p className="mt-6 text-xs text-gray-500 dark:text-gray-400">

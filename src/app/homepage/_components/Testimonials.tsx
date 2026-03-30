@@ -56,13 +56,15 @@ export function Testimonials() {
             </div>
 
             <div className="flex items-center gap-4">
-              <Image
-                src={current.avatar}
-                alt={current.author}
-                className="rounded-full object-cover"
-                width={48}
-                height={48}
-              />
+              <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
+                <Image
+                  src={current.avatar}
+                  alt={current.author}
+                  fill
+                  sizes="48px"
+                  className="object-cover"
+                />
+              </div>
               <div>
                 <p className="font-bold text-sm">{current.author}</p>
                 <p className="text-xs text-gray-500">{current.role}</p>

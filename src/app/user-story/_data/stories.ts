@@ -5,13 +5,14 @@ export interface AlumniStory {
     photo: string;           // Path ke gambar
     persona: PersonaType;    // Kategori persona
     personaLabel: string;    // Label untuk ditampilkan
-    quote: string;           // Kutipan singkat
+    /** Teks testimoni utuh dari rekap; di kartu dipotong (line-clamp), di modal dipecah ke timeline. */
+    quote: string;
     story: {
-        before: string;        // Kondisi sebelum
-        turningPoint: string;  // Momen menemukan Kelas Inovatif
-        after: string;         // Hasil/transformasi
+        before: string;        // Potongan verbatim (biasanya awal testimoni)
+        turningPoint: string;  // Potongan verbatim (tengah)
+        after: string;         // Potongan verbatim (akhir)
     };
-    highlights: string[];    // Angka-angka penting (Turnitin 11%, dll)
+    highlights: string[];    // Frasa singkat yang disadur dari kata-kata rekap (bukan angka fiksi)
     videoUrl?: string;       // YouTube URL (opsional)
 }
 
@@ -23,101 +24,257 @@ export type PersonaType =
     | 'produktif-menulis'
     | 'dosen-muda';
 
+/** 14 cerita — sumber teks: reference/rekap-testimoni.md (urutan: Prof. lalu Dr.). */
 export const stories: AlumniStory[] = [
     {
-        id: 'wayan-tangun',
-        name: 'Wayan Tangun Setiarien, M.M.',
-        title: 'Alumni Magister Manajemen',
-        photo: '/images/testimonials/Wayan Tangun.avif',
-        persona: 'awam-teknologi',
-        personaLabel: 'Awam Teknologi & Bisnis',
-        quote: "Jujur saya gaptek. Tapi di sini saya diajari pelan-pelan sampai bisa analisis 200 halaman data cuma dalam 7 menit.",
+        id: 'eko-nursanty',
+        name: 'Prof. Dr. Ars. Eko Nursanty, ST., MT.',
+        title: 'Guru Besar Universitas 17 Agustus 1945 (UNTAG) Semarang',
+        photo: '/images/testimonials/profsanti.avif',
+        persona: 'produktif-menulis',
+        personaLabel: 'Guru Besar & Publikasi',
+        quote:
+            'Sebagai Guru Besar, saya dituntut terus produktif dalam publikasi. NotebookLM membantu saya menganalisis ratusan paper dan menemukan research gap dengan cepat. Riset yang dulu butuh berminggu-minggu, sekarang bisa selesai dalam hitungan hari.',
         story: {
-            before: "Sebagai orang non-IT, dengar kata 'AI' saja saya sudah takut. Khawatir nggak nyambung, takut salah pencet, dan takut tulisan jadi kaku kayak robot. Di kantor, saya juga kewalahan harus baca ratusan halaman laporan menu manual satu per satu.",
-            turningPoint: "Masuk Kelas Inovatif rasanya beda. Pendekatannya 'membumi'. Saya diajari cara bikin AI ngomong pakai bahasa manusia yang sederhana—gaya saya banget. Plus trik 'ngasih makan' data tebal ke AI biar nggak error.",
-            after: "Hasilnya? Tesis saya lancar dengan revisi tipis karena bahasanya enak dibaca. Di kantor lebih gila lagi: analisa 50 menu restoran (200 halaman) yang biasanya mingguan, sekarang kelar 7 menit. Produktivitas naik drastis!"
+            before: 'Sebagai Guru Besar, saya dituntut terus produktif dalam publikasi.',
+            turningPoint:
+                'NotebookLM membantu saya menganalisis ratusan paper dan menemukan research gap dengan cepat.',
+            after: 'Riset yang dulu butuh berminggu-minggu, sekarang bisa selesai dalam hitungan hari.'
         },
-        highlights: ["Analisis 7 Menit", "Kerjaan Ringan", "Revisi Minim"],
-        videoUrl: ""
+        highlights: ['NotebookLM', 'Ratusan paper', 'Hitungan hari'],
+        videoUrl: ''
+    },
+    {
+        id: 'rupa-matheus',
+        name: 'Prof. Dr. Ir. Rupa Matheus, M.Si.',
+        title: 'Guru Besar Politani Kupang, NTT',
+        photo: '/images/testimonials/prof-dr-ir-rupa-matheus-m-si.avif',
+        persona: 'produktif-menulis',
+        personaLabel: 'Guru Besar & Dosen Senior',
+        quote:
+            'Sebagai dosen senior, awalnya saya cukup ragu menggunakan AI dalam aktivitas akademik. Namun setelah mengikuti Kelas Inovatif dari Maret 2025, pandangan saya berubah total. AI—terutama perpaduan antara Cursor & Scipace—ternyata sangat membantu dalam menyusun materi kuliah, menulis buku ajar dan buku referensi, hingga menghasilkan artikel ilmiah. Berkat kelas ini, saya lebih produktif dan berhasil menyelesaikan lebih banyak karya dibanding sebelumnya.',
+        story: {
+            before: 'Sebagai dosen senior, awalnya saya cukup ragu menggunakan AI dalam aktivitas akademik.',
+            turningPoint:
+                'Namun setelah mengikuti Kelas Inovatif dari Maret 2025, pandangan saya berubah total. AI—terutama perpaduan antara Cursor & Scipace—ternyata sangat membantu dalam menyusun materi kuliah, menulis buku ajar dan buku referensi, hingga menghasilkan artikel ilmiah.',
+            after: 'Berkat kelas ini, saya lebih produktif dan berhasil menyelesaikan lebih banyak karya dibanding sebelumnya.'
+        },
+        highlights: ['Kelas Inovatif Maret 2025', 'Cursor & Scipace', 'Lebih banyak karya'],
+        videoUrl: ''
+    },
+    {
+        id: 'prof-m-natsir',
+        name: 'Prof. Dr. M. Natsir, SE., M.Si',
+        title: 'Dosen Universitas Halu Oleo',
+        photo: '/images/testimonials/prof-dr-m-natsir-se-m-si.avif',
+        persona: 'produktif-menulis',
+        personaLabel: 'Tri Dharma & NotebookLM',
+        quote:
+            'Alhamdulillah kegiatan Kelas Inovatif ini sangat membantu & memudahkan saya menyelesaikan tugas kegiatan Tri Dharma PT secara luas maupun pelaksanaan Dharma Pendidikan & Pengajaran. NotebookLM yg diajarkan di Kelas Inovatif sangat bermanfaat ketika saya menyiapkan atau membuat Ppt dgn kendala waktu yg sangat terbatas, ppt generated by NotebookLM sangat bagus dibandingkan dgn menggunakan AI yg lain. Saya sarankan pada semua akademisi u mengikuti acara Kelas Inovatif karena saya sudah rasakan manfaatnya. Mari maju dan berkembang bersama Kelas Inovatif',
+        story: {
+            before:
+                'Alhamdulillah kegiatan Kelas Inovatif ini sangat membantu & memudahkan saya menyelesaikan tugas kegiatan Tri Dharma PT secara luas maupun pelaksanaan Dharma Pendidikan & Pengajaran.',
+            turningPoint:
+                'NotebookLM yg diajarkan di Kelas Inovatif sangat bermanfaat ketika saya menyiapkan atau membuat Ppt dgn kendala waktu yg sangat terbatas, ppt generated by NotebookLM sangat bagus dibandingkan dgn menggunakan AI yg lain.',
+            after: 'Saya sarankan pada semua akademisi u mengikuti acara Kelas Inovatif karena saya sudah rasakan manfaatnya. Mari maju dan berkembang bersama Kelas Inovatif'
+        },
+        highlights: ['Tri Dharma', 'NotebookLM untuk PPT', 'Berkembang bersama Kelas Inovatif'],
+        videoUrl: ''
     },
     {
         id: 'leopold-baginda',
         name: 'Dr. Leopold Baginda, S.Pd., M.Th.',
         title: 'Dosen STT Injili Indonesia Palu',
-        photo: '/images/testimonials/LEOPOLD BAGINDA.avif',
+        photo: '/images/testimonials/leopold-baginda.avif',
         persona: 'stuck-lama',
-        personaLabel: 'Sudah Lama Stuck',
-        quote: "Disertasi itu perjalanan sepi. Tapi dengan 'teman diskusi' yang tepat, Turnitin saya bisa turun ke 7% dan tembus Scopus Q1.",
+        personaLabel: 'Disertasi & Integritas',
+        quote:
+            "Disertasi itu perjalanan sepi. Tapi dengan 'teman diskusi' yang tepat, Turnitin saya bisa turun ke 7% dan tembus Scopus Q1.",
         story: {
-            before: "Bertahun-tahun disertasi saya jalan di tempat. Masalah utamanya validasi orisinalitas; tiap cek Turnitin selalu merah. Mau parafrase topik teologi yang sensitif itu susahnya minta ampun. Rasanya buntu dan hampir nyerah.",
-            turningPoint: "Di sini mindset saya diubah. Cursor bukan joki, tapi 'mitra dialog'. Saya diajari diskusi sama AI: minta 10 opsi judul, minta tunjukin bagian plagiat, dan cari solusi bareng. Interaksinya dua arah, kayak ngobrol sama asisten cerdas.",
-            after: "Skor Turnitin saya berhasil ditekan dari 11% jadi 7-8% dengan rapi. Argumen jadi lebih tajam. Puncaknya, artikel tim kami tembus Scopus Q1. Saya lulus Doktor dengan bangga, karena ini murni hasil pemikiran saya yang dibantu teknologi."
+            before: 'Disertasi itu perjalanan sepi.',
+            turningPoint:
+                "Tapi dengan 'teman diskusi' yang tepat, Turnitin saya bisa turun ke 7% dan tembus Scopus Q1.",
+            after: ''
         },
-        highlights: ["Turnitin 7%", "Tembus Scopus Q1", "Lulus Doktor"],
-        videoUrl: ""
+        highlights: ['Disertasi', 'Turnitin 7%', 'Scopus Q1'],
+        videoUrl: ''
     },
     {
         id: 'tri-nugraha',
         name: 'Dr. Tri Nugraha Sakti, MSI',
         title: 'Lecturer LSPR Institute',
-        photo: '/images/testimonials/Dr. Tri Nugraha Sakti, MSI.avif',
+        photo: '/images/testimonials/dr-tri-nugraha-sakti-msi.avif',
         persona: 'takut-plagiasi',
         personaLabel: 'Takut Plagiasi',
-        quote: "Saya udah coba macem-macem tool untuk mengatasi plagiasi. Cuma Cursor yang bisa konsisten 5% buat standar Scopus.",
+        quote:
+            'Saya udah coba macem-macem tool untuk mengatasi plagiasi. Cuma NotebookLM & Cursor yang bisa konsisten 5% buat standar Scopus.',
         story: {
-            before: "Saya sangat skeptis soal integritas akademik. Tools lain kayak Quillbot atau Jenny AI hasilnya mengecewakan—Jenny AI bahkan bikin paper saya kena Turnitin 80%. Bahaya banget buat reputasi dosen kalau nekat dipakai.",
-            turningPoint: "Pas bedah Cursor di Kelas Inovatif, saya baru paham bedanya 'Chatbot' sama 'Agent'. Logikanya lebih dalam, nggak asal ngarang (halusinasi). Kita diajari pakai logic itu buat nyusun bahasa Inggris standar jurnal tingkat tinggi.",
-            after: "Saya buktikan pakai data: Paper dengan metode ini konsisten plagiasinya di 5%, aman buat Scopus. Kualitas bahasanya pun level Q1. Ini bukan jalan pintas, tapi soal memilih alat yang memang kelasnya beda."
+            before: 'Saya udah coba macem-macem tool untuk mengatasi plagiasi.',
+            turningPoint: 'Cuma NotebookLM & Cursor yang bisa konsisten 5% buat standar Scopus.',
+            after: ''
         },
-        highlights: ["Plagiasi 5%", "Standar Scopus", "Aman & Etis"],
-        videoUrl: ""
-    },
-    {
-        id: 'akhmad-suhaidi',
-        name: 'Akhmad Suhaidi, S.H',
-        title: 'Mahasiswa Magister Hukum',
-        photo: '/images/testimonials/AKHMAD SUHAIDI.avif',
-        persona: 'mahasiswa-biasa',
-        personaLabel: 'Mahasiswa Biasa',
-        quote: "Semester 3 proposal udah beres. Fitur Git-nya ngebantu banget ngurusin revisi dosen yang bejibun.",
-        story: {
-            before: "Anak hukum pasti tahu ribetnya detail redaksional. Dulu file saya berantakan, pusing ngelacak revisi dosen. Waktu habis cuma buat ngerapihin file, bukan mikir substansi hukumnya. Progres jadi kerasa lambat banget.",
-            turningPoint: "Ternyata Cursor punya fitur 'Git'—semacam mesin waktu buat dokumen. Saya diajari cara manage revisi biar rapi, plus cara pakai 'Research Online' buat nyari dasar hukum terbaru yang valid tanpa hoax.",
-            after: "Sekarang temen lain baru mulai, saya di semester 3 proposal tesis udah mateng. Revisi dosen ada, tapi ngerjainnya cepet dan terukur. Plagiasi aman di bawah 5%. Kuliah S2 jadi terasa jauh lebih ringan."
-        },
-        highlights: ["Proposal Sem. 3", "Plagiasi < 5%", "Revisi Rapi"],
-        videoUrl: ""
+        highlights: ['NotebookLM & Cursor', '5% standar Scopus', 'Plagiasi'],
+        videoUrl: ''
     },
     {
         id: 'arif-muljohadi',
         name: 'Dr. R. Arif Muljohadi, S.H., M.Hum.',
         title: 'Dosen Universitas Bangkalan',
-        photo: '/images/testimonials/Arif Mulyohadi.avif',
+        photo: '/images/testimonials/arif.webp',
         persona: 'produktif-menulis',
-        personaLabel: 'Ingin Produktif Menulis',
-        quote: "Dulu target 'Satu Bulan Satu Buku' rasanya mustahil. Sekarang? Satu semester ganjil aja jadi 3 buku.",
+        personaLabel: 'Produktif Menulis Buku',
+        quote:
+            "Dulu target 'Satu Bulan Satu Buku' rasanya mustahil. Sekarang? Satu semester ganjil aja jadi 3 buku.",
         story: {
-            before: "Niat jadi Guru Besar menggebu, tapi eksekusi sering macet. Ikut workshop AI lain malah tambah bingung kebanyakan teori. Target nulis buku rutin rasanya mustahil, satu buku aja setahun bisa nggak kelar-kelar.",
-            turningPoint: "Masuk sini rasanya beda. Nggak banyak teori njelimet, langsung praktik workflow simpel. 'Klik ini, prompt-nya gini, jadi'. Bener-bener mecahin kebuntuan ide (writer's block) saya.",
-            after: "Nulis buku sekarang jadi rutinitas. Semester ganjil kemarin saya selesaikan 3 buku siap ISBN. Cursor bantu kerangka, saya isi kepakaran hukumnya. Target Guru Besar rasanya udah di depan mata."
+            before: "Dulu target 'Satu Bulan Satu Buku' rasanya mustahil.",
+            turningPoint: 'Sekarang? Satu semester ganjil aja jadi 3 buku.',
+            after: ''
         },
-        highlights: ["3 Buku / Semester", "Otw Guru Besar", "Caranya Simpel"],
-        videoUrl: ""
+        highlights: ['Satu Bulan Satu Buku', '3 buku', 'Semester ganjil'],
+        videoUrl: ''
     },
     {
-        id: 'rakhmadi-irfansyah',
-        name: 'Rakhmadi Irfansyah Putra, S.Kom., MMSI',
-        title: 'Dosen ITPLN',
-        photo: '/images/testimonials/Rakhmadi Irfansyah Putra, S.Kom., MMSI.avif',
-        persona: 'dosen-muda',
-        personaLabel: 'Dosen Muda',
-        quote: "Lulus sidang proposal pas awal semester 2. Ini bukan hoki, tapi karena sistemnya emang bisa diulang (repeatable).",
+        id: 'mahmud',
+        name: 'Dr. Mahmud, S.E., M.M.',
+        title: 'Dosen Universitas Dian Nuswantoro',
+        photo: '/images/testimonials/mahfud.gif',
+        persona: 'produktif-menulis',
+        personaLabel: 'Presentasi & Seminar',
+        quote:
+            'Fitur presentasi NotebookLM luar biasa. Upload jurnal, langsung jadi slide presentasi yang siap pakai. Persiapan seminar yang biasa 3 hari, sekarang cukup 2 jam.',
         story: {
-            before: "Jadi dosen muda sambil S3 itu capeknya ampun-ampunan. Orang kira orang IT risetnya gampang, padahal sama aja waktu habis buat ngajar. Saya butuh cara kerja pasti, bukan coba-coba yang buang waktu.",
-            turningPoint: "Saya terapin semua 'resep' Kelas Inovatif, nggak setengah-setengah. Saya lihat ini sistem yang solid. Kalau diikuti langkahnya—prompting, iterasi, validasi—hasilnya pasti bagus.",
-            after: "Dan bener, awal semester 2 saya udah lulus sidang proposal S3. Plagiasi konsisten di bawah 5%. Pola ini bisa saya pakai terus (repeatable) buat paper selanjutnya. Efisiensi waktu dapet, kualitas juga dapet."
+            before: 'Fitur presentasi NotebookLM luar biasa.',
+            turningPoint: 'Upload jurnal, langsung jadi slide presentasi yang siap pakai.',
+            after: 'Persiapan seminar yang biasa 3 hari, sekarang cukup 2 jam.'
         },
-        highlights: ["Lulus Sem. 2", "Plagiasi < 5%", "Pola Pasti"],
-        videoUrl: ""
+        highlights: ['Presentasi NotebookLM', 'Slide siap pakai', '3 hari → 2 jam'],
+        videoUrl: ''
+    },
+    {
+        id: 'anas-rahmad-hidayat',
+        name: 'Dr. Anas Rahmad Hidayat, S.KM., M.Kes.',
+        title: 'Direktur Poltekkes Permata Indonesia Yogyakarta',
+        photo: '/images/testimonials/anas.gif',
+        persona: 'produktif-menulis',
+        personaLabel: 'Pimpinan & Literatur',
+        quote:
+            'Sebagai Direktur, waktu saya terbatas. NotebookLM bantu saya tetap update literatur terbaru tanpa harus baca satu per satu. Review 50 jurnal? Cukup 1 sore.',
+        story: {
+            before: 'Sebagai Direktur, waktu saya terbatas.',
+            turningPoint:
+                'NotebookLM bantu saya tetap update literatur terbaru tanpa harus baca satu per satu.',
+            after: 'Review 50 jurnal? Cukup 1 sore.'
+        },
+        highlights: ['Direktur', '50 jurnal', '1 sore'],
+        videoUrl: ''
+    },
+    {
+        id: 'nur-arida-hendrawati',
+        name: 'Dr. Nur Arida Hendrawati, S.IP, MM.',
+        title: 'Universitas Negeri Yogyakarta',
+        photo: '/images/testimonials/nurarida.avif',
+        persona: 'produktif-menulis',
+        personaLabel: 'Dosen & Riset',
+        quote:
+            'Sebagai dosen, saya harus baca puluhan referensi untuk satu mata kuliah. Dengan NotebookLM, saya bisa merangkum dan membandingkan isi jurnal dalam hitungan menit. Produktivitas riset saya meningkat drastis.',
+        story: {
+            before: 'Sebagai dosen, saya harus baca puluhan referensi untuk satu mata kuliah.',
+            turningPoint:
+                'Dengan NotebookLM, saya bisa merangkum dan membandingkan isi jurnal dalam hitungan menit.',
+            after: 'Produktivitas riset saya meningkat drastis.'
+        },
+        highlights: ['Puluhan referensi', 'Hitungan menit', 'Produktivitas riset'],
+        videoUrl: ''
+    },
+    {
+        id: 'leni-zahara',
+        name: 'Dr. Leni Zahara, S. Pd., MP',
+        title: 'Dosen Universitas Negeri Padang',
+        photo: '/images/testimonials/dr-leni-zahara-s-pd-mp.avif',
+        persona: 'produktif-menulis',
+        personaLabel: 'Kajian Pustaka',
+        quote:
+            'Sangat membantu membedah ratusan jurnal dalam waktu singkat. Dulu bingung membangun argumen untuk kajian pustaka, sekarang dengan NotebookLM draf awal selesai dalam hitungan jam.',
+        story: {
+            before: 'Sangat membantu membedah ratusan jurnal dalam waktu singkat.',
+            turningPoint: 'Dulu bingung membangun argumen untuk kajian pustaka, sekarang dengan NotebookLM draf awal selesai dalam hitungan jam.',
+            after: ''
+        },
+        highlights: ['Ratusan jurnal', 'NotebookLM', 'Hitungan jam'],
+        videoUrl: ''
+    },
+    {
+        id: 'esther-hesline-palandi',
+        name: 'Dr. Esther Hesline Palandi, M.Pd.',
+        title: 'Dosen Politeknik Negeri Malang',
+        photo: '/images/testimonials/dr-esther-hesline-palandi-m-pd.avif',
+        persona: 'produktif-menulis',
+        personaLabel: 'Review Jurnal',
+        quote:
+            'Materi yang diajarkan sangat praktis! Proses mengumpulkan dan mereview banyak jurnal dalam bahasa Inggris jauh lebih cepat dan mudah dipahami.',
+        story: {
+            before: 'Materi yang diajarkan sangat praktis!',
+            turningPoint:
+                'Proses mengumpulkan dan mereview banyak jurnal dalam bahasa Inggris jauh lebih cepat dan mudah dipahami.',
+            after: ''
+        },
+        highlights: ['Materi praktis', 'Jurnal bahasa Inggris', 'Lebih cepat'],
+        videoUrl: ''
+    },
+    {
+        id: 'johanna-taribuka',
+        name: 'Dr. Ir. Johanna Taribuka, M.P.',
+        title: 'Universitas Pattimura Ambon',
+        photo: '/images/testimonials/dr-ir-johanna-taribuka-m-p.avif',
+        persona: 'awam-teknologi',
+        personaLabel: 'Pelatihan Klasinovatif',
+        quote:
+            'mengikuti pelatihan/kursus di Klasinovatif sangat menunjang saya dalam pekerjaan saya sebagai pengajar. Materi yang diberikan sangat mengena, pemateri sangat care dan sabar apabila kita minta untuk diulangi lagi materinya, apalagi bagi kami yang sudah berusia, dan gaptek. Ada kepedulian sebagai bonus apabila kita berpartisipasi aktif saat diskusi (dimasukan sebagai bagian dalam jurnal PKM), sangat hebat sekali. Semoga materi2 yang dibagi bisa bermanfaat selanjutnya. Pokoknya top mengikuti Klasinovatif.',
+        story: {
+            before:
+                'mengikuti pelatihan/kursus di Klasinovatif sangat menunjang saya dalam pekerjaan saya sebagai pengajar. Materi yang diberikan sangat mengena, pemateri sangat care dan sabar apabila kita minta untuk diulangi lagi materinya, apalagi bagi kami yang sudah berusia, dan gaptek.',
+            turningPoint:
+                'Ada kepedulian sebagai bonus apabila kita berpartisipasi aktif saat diskusi (dimasukan sebagai bagian dalam jurnal PKM), sangat hebat sekali.',
+            after: 'Semoga materi2 yang dibagi bisa bermanfaat selanjutnya. Pokoknya top mengikuti Klasinovatif.'
+        },
+        highlights: ['Klasinovatif', 'Pemateri sabar', 'Jurnal PKM'],
+        videoUrl: ''
+    },
+    {
+        id: 'ahmad-zayyadi',
+        name: 'Dr. Ahmad Zayyadi, M.A., M.H.I',
+        title: 'Dosen UIN Profesor Kiai Haji Saifuddin Zuhri Purwokerto',
+        photo: '/images/testimonials/dr-ahmad-zayyadi-m-a-m-h-i.avif',
+        persona: 'produktif-menulis',
+        personaLabel: 'Jurnal Ilmiah & AI',
+        quote:
+            'Setelah mengikuti program kelas Inovatif, sya banyak mendapat kan ilmu tentang penulisan Jurnal Ilmiah berbasi AI, trmksh banyak atas ilmu yang diberikan..',
+        story: {
+            before:
+                'Setelah mengikuti program kelas Inovatif, sya banyak mendapat kan ilmu tentang penulisan Jurnal Ilmiah berbasi AI, trmksh banyak atas ilmu yang diberikan..',
+            turningPoint: '',
+            after: ''
+        },
+        highlights: ['Jurnal Ilmiah berbasis AI', 'Kelas Inovatif', 'Ilmu yang diberikan'],
+        videoUrl: ''
+    },
+    {
+        id: 'dwi-asih-kumala-handayani',
+        name: 'Dr. Dwi Asih Kumala Handayani, M.Pd.',
+        title: 'Dosen Universitas Ivet Semarang',
+        photo: '/images/testimonials/dr-dwi-asih-kumala-handayani-m-pd.avif',
+        persona: 'awam-teknologi',
+        personaLabel: 'Komunitas Kelas Inovatif',
+        quote:
+            'Terimakasih kelasinovatif yang telah memberikan kesempatan mengikuti event di komunitas kelas inovatif yang luar biasa. Saya benar merasakan manfaatnya dan dapat mengikuti kelas dengan baik meski saya sudah lebih 60 tahun. Karena pengajarnya sangat sabar dan detail cara menjelaskannya. Mas Daffa sebagai operator dan moderator sangat ramah, santun, dan akrab dengan peserta. Sekali lagi terimakasih kelasinovatif. Semoga semakin sukses membantu kami yang ingin selalu belajar. Aamiin YRA 🙌🏼🙏🏼',
+        story: {
+            before:
+                'Terimakasih kelasinovatif yang telah memberikan kesempatan mengikuti event di komunitas kelas inovatif yang luar biasa. Saya benar merasakan manfaatnya dan dapat mengikuti kelas dengan baik meski saya sudah lebih 60 tahun.',
+            turningPoint:
+                'Karena pengajarnya sangat sabar dan detail cara menjelaskannya. Mas Daffa sebagai operator dan moderator sangat ramah, santun, dan akrab dengan peserta.',
+            after: 'Sekali lagi terimakasih kelasinovatif. Semoga semakin sukses membantu kami yang ingin selalu belajar. Aamiin YRA 🙌🏼🙏🏼'
+        },
+        highlights: ['Komunitas kelasinovatif', 'Lebih 60 tahun', 'Mas Daffa'],
+        videoUrl: ''
     }
 ];
